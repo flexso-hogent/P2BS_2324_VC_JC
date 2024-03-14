@@ -1,4 +1,6 @@
-- User: moet geregistreerd zijn om events te bekijken en te boeken? Of eender wie kan events bekijken en moet pas registreren als die event wil boeken.
+- Moet user ingelogd zijn om een event te boeken/bekijken, kan de beheerder events kopen of zijn deze accounts puur ter administratie
+
+- evt parking als sessie of een soort van *joker* op event ticket?
 
 - Bestaat event altijd uit 1 of meerdere sessies?
 
@@ -12,5 +14,5 @@
 
 - Zijn de attributen correct voor gebruiker, event, sessie, review? of moet er nog iets ander bijgehouden worden? Moeten er voor de beheerder nog unieke attributen bijgehouden worden?
 
-
+- rol binnen bedrijf,
  
