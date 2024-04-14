@@ -4,7 +4,10 @@ const sqlite3 = require('sqlite3').verbose();
 
 // Functie om gegevens van CSV naar de database te schrijven
 function writeToDatabase(filename, tableName, db) {
-  fs.createReadStream(filename)
+  const filePath = `csv/${filename}`;
+  // console.log('Bestandspad:', filePath);
+
+  fs.createReadStream(filePath)
     .pipe(csv())
     .on('data', (row) => {
       // Voeg de gegevens toe aan de database
@@ -18,6 +21,8 @@ function writeToDatabase(filename, tableName, db) {
     })
     .on('end', () => {
       console.log(`Gegevens van ${filename} zijn succesvol toegevoegd aan de database`);
+      
+      
     });
 }
 
@@ -25,9 +30,9 @@ function writeToDatabase(filename, tableName, db) {
 let db = new sqlite3.Database('my-events.db');
 
 // Roep de functie writeToDatabase aan voor elk CSV-bestand
-writeToDatabase('my.events-Events.csv', 'Evenementen', db);
-writeToDatabase('my.events-Sessions.csv', 'Sessies', db);
-writeToDatabase('my.events-Users.csv', 'Gebruikers', db);
+writeToDatabase('my.event-Events.csv', 'Evenementen', db);
+writeToDatabase('my.event-Sessions.csv', 'Sessies', db);
+writeToDatabase('my.event-Users.csv', 'Gebruikers', db);
 
 // Sluit de databaseverbinding wanneer het proces is voltooid
 db.close();
