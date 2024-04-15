@@ -1,21 +1,7 @@
 <mvc:View controllerName="flexso.controller.App"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Shell id="shell">
         <App id="app">
-            <pages>
-                <Page id="page" title="{i18n>title}">
-                    <content> 
-<!--                         <Button text="TODO" 
-                        type="Accept" id="btnHello" 
-                        press="onPress" />
-                        <Input value="{/user}"
-                        description="Hello {/user}"
-                        valueLiveUpdate="true"
-                        width="60%"/> -->
-                    </content >
-                </Page>
-            </pages>
+            <Button id="button" text="Apps"></Button>
         </App>
-    </Shell>
 </mvc:View>

@@ -1,0 +1,11 @@
+<mvc:View controllerName="flexso.controller.Startpage"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"> 
+    
+        <Page id="Startpage" title="{i18n>title}">
+            <Button id="button" text="Startpage"></Button>
+        </Page>
+    
+    
+   
+</mvc:View>
