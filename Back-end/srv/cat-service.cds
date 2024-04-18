@@ -1,9 +1,9 @@
 using my.events as my from '../db/data-model';
 
 service EventService {
-  entity Evenementen @readonly as projection on my.Evenementen;
-  entity Sessies @readonly as projection on my.Sessies;
-  entity Gebruikers @readonly as projection on my.Gebruikers;
+  entity Events @readonly as projection on my.Events;
+  entity Sessions @readonly as projection on my.Sessions;
+  entity Users @readonly as projection on my.Users;
 }
 
 

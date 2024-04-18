@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^3.0.0"
+    "@ui5/cli": "^3.0.0",
+    "@cap-js/sqlite": "^1"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#flexso-display\"",
@@ -26,5 +27,12 @@
     "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
     "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\""
   },
+  "cds": { "requires": {
+    "db": {
+      "kind": "sqlite",
+      "credentials": { "url": "db/my-events.sqlite" }
+    }
+  }},
+
   "sapuxLayer": "CUSTOMER_BASE"
 }

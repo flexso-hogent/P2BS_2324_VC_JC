@@ -1,26 +1,26 @@
 namespace my.events;
 
-entity Evenementen {
+entity Events {
   key eventID : UUID;
   naam   : String;
   beschrijving: String;
   datum    : DateTime;
   locatie: String;
-  sessies: Association to many Sessies on sessies.event = $self;
+  sessies: Association to many Sessions on sessies.event = $self;
 }
 
-entity Sessies {
+entity Sessions {
   key sessieID : UUID;
   naam  : String;
   beschrijving: String;
   spreker: String;
   datum: DateTime;
   lokaalnummer: String;
-  event : Association to Evenementen;
-  aanwezigeGebruikers: Association to many Gebruikers //on aanwezigeGebruikers.sessie = $self;
+  event : Association to Events;
+  aanwezigeGebruikers: Association to many Users //on aanwezigeGebruikers.sessie = $self;
 }
 
-entity Gebruikers {
+entity Users {
   key mail: String(100) not null; // Mail als primaire sleutel
   voornaam: String(50);
   achternaam: String(50);
