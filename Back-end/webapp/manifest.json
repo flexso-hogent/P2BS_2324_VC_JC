@@ -57,6 +57,15 @@
         "settings": {
           "bundleName": "flexso.i18n.i18n"
         }
+      },
+      "events": { 
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "sessions": { 
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "users": { 
+        "type": "sap.ui.model.json.JSONModel"
       }
     },
     "resources": {
