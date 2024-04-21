@@ -47,6 +47,18 @@
         "sap.ushell": {}
       }
     },
+      "config": {
+        "sample": {
+          "stretch": true,
+          "files": [
+            "Startpage.view.xml",
+            "Startpage.controller.js",
+            "TileData.json",
+            "manifest.json"
+          ]
+        }
+      },  
+    
     "contentDensities": {
       "compact": true,
       "cozy": true

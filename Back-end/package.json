@@ -2,7 +2,7 @@
   "name": "flexso",
   "version": "0.0.1",
   "private": true,
-  "description": "Beschikbare evenementen en hun sessies.",
+  "description": "Available events and their sessions.",
   "keywords": [
     "ui5",
     "openui5",
@@ -14,9 +14,10 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.8",
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^3.0.0",
-    "@cap-js/sqlite": "^1"
+    "@ui5/cli": "^3.0.0"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#flexso-display\"",
@@ -25,14 +26,18 @@
     "deploy": "fiori verify",
     "deploy-config": "fiori add deploy-config",
     "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
-    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\""
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "watch-flexso": "cds watch --open flexso/webapp/index.html?sap-ui-xx-viewCache=false"
   },
-  "cds": { "requires": {
-    "db": {
-      "kind": "sqlite",
-      "credentials": { "url": "db/my-events.sqlite" }
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db/my-events.sqlite"
+        }
+      }
     }
-  }},
-
+  },
   "sapuxLayer": "CUSTOMER_BASE"
 }
