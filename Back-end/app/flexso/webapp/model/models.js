@@ -18,13 +18,6 @@ sap.ui.define([
                 var oModel = new JSONModel(Device);
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
-        },
-
-        createJSONModelFromFile: function (sPath) {
-            // Create JSON model from a given path (like a CSV file)
-            var oModel = new JSONModel(sPath);
-            oModel.setDefaultBindingMode("TwoWay"); // Set to TwoWay if you need two-way data binding
-            return oModel;
         }
     };
 });

@@ -1,7 +1,26 @@
 <mvc:View controllerName="flexso.controller.App"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
+    <App id="app">
     <Page id="page" title="{i18n>title}">
-        <content />
+    <Table id="idProductsTable"
+		inset="false"
+		items="{/Events}">
+		<columns>
+			<Column id="_IDGenColumn1"
+				width="12em">
+				<Text id="_IDGenText1" text="naam" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+				<cells>
+					<Text id="_IDGenText6"
+						text="{naam}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
     </Page>
+    </App>
 </mvc:View>
