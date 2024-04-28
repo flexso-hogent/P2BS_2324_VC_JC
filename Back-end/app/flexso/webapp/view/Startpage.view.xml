@@ -2,54 +2,26 @@
     xmlns:mvc="sap.ui.core.mvc" 
     displayBlock="true"
     xmlns="sap.m">
-
+    <App id="_IDGenApp1">
 	<Page id="frontPage"
 		showHeader="true"
 		enableScrolling="true" >
-
-        <content>
-
-            <ObjectHeader id="header"
-                title="The Networking Hub - Connecting interests into meaningfull relationships"
-                icon="sap-icon://calendar"
-                intro="Find and join one of our events"
-                responsive="true" />
-
-
-            <TileContainer
-                id="container"
-                tileDelete="handleTileDelete"
-                tiles="{/TileCollection}">
-                <StandardTile id="pictureTile"
-                    icon="{icon}"
-                    type="{type}"
-                    number="{number}"
-                    numberUnit="{numberUnit}"
-                    title="{title}"
-                    info="{info}"
-                    infoState="{infoState}" />
-            </TileContainer>
-            <VBox id="vBox1" class="sapUiLargeMarginTop sapUiLargeMarginBottom">
-                <HBox id="hBox1" justifyContent="SpaceBetween" alignItems="Center">
-                    <Title id="title" text="Popular Events" level="H2" />
-                    <Button id="buttonSeeAll" text="See All" press="onSeeAllEventsPress" />
-                </HBox>
-                <List id="listPopularEvents" items="{/popularEvents}">
-                    <StandardListItem id="listItem1"
-                        title="{title}"
-                        icon="{icon}"
-                        description="{date}"
-                        press="onEventPress" />
-                </List>
-            </VBox>
-            
-            <Toolbar id="toolbarButton" design="Auto" >
-                <ToolbarSpacer id="toolbarEditButton" />
-                    <Button id="editButton" text="Edit" press="handleEditPress" />
-                    <Button id="busyButton" text="Busy state" press="handleBusyPress" />
-                <ToolbarSpacer id="toolbarButtonEmpty" />
-            </Toolbar>
-            
-        </content>
+        <Table id="_IDGenTable1" inset="false" items="{path: '/Events'}">
+            <columns>
+                <Column id="_IDGenColumn1" width="12em">
+                    <Text id="_IDGenText1" text="{Event}">
+                    </Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+                    <cells>
+                        <Text id="_IDGenText2" text="{eventID}">
+                        </Text>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
 	</Page>
+    </App>
 </mvc:View>

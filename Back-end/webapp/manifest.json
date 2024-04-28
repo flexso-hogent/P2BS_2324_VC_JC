@@ -14,8 +14,26 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.12.5",
       "toolsId": "c306f710-a6ba-44dd-af2b-ea33094c4a4e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/event/",
+        "type": "OData",
+        "settings":{
+          "annotations": [],
+          "odataVersion": "4.0"
+        } 
+      },    
+      "v2mainService": {
+        "uri": "/odata/v2/event/",
+        "type": "OData",
+        "settings":{
+          "annotations": [],
+          "odataVersion": "4.0"
+        } 
+      }
     }
-  },
+},       
   "sap.ui": {
     "technology": "UI5",
     "icons": {
@@ -35,7 +53,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.121.1",
+      "minUI5Version": "1.123.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -78,6 +96,16 @@
       },
       "users": { 
         "type": "sap.ui.model.json.JSONModel"
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {
@@ -100,7 +128,7 @@
       "routes": [
         {
           "name": "RouteApp",
-          "pattern": "",
+          "pattern": ":?query:",
           "target": [
             "TargetStartpage"
           ]

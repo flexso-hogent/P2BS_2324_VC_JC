@@ -1,5 +1,34 @@
 
 sap.ui.define([
+    "sap/ui/core/mvc/Controller"
+],
+    /**
+     * @param {typeof sap.ui.core.mvc.Controller} Controller
+     */
+    function (Controller) {
+        "use strict";
+
+        return Controller.extend("flexso.controller.Startpage", {
+            onInit: function () {
+                // Initialiseer modellen met gegevens uit CSV-bestanden
+        var eventsPath = sap.ui.require.toUrl("../../db/csv/my.event-Events.csv");
+        var sessionsPath = sap.ui.require.toUrl("../../db/csv/my.event-Sessions.csv");
+        // var usersPath = sap.ui.require.toUrl("../../db/csv/my.event-Users.csv");
+
+        var eventsModel = new JSONModel(eventsPath);
+        var sessionsModel = new JSONModel(sessionsPath);
+        // var usersModel = new JSONModel(usersPath);
+
+        // Stel de modellen in op de view
+        this.getView().setModel(eventsModel, "events");
+        this.getView().setModel(sessionsModel, "sessions");
+        // this.getView().setModel(usersModel, "users");
+            }
+        });
+    });
+
+/*
+sap.ui.define([
     'sap/ui/core/mvc/Controller',
     'sap/ui/model/json/JSONModel'
 ], function(Controller, JSONModel) {

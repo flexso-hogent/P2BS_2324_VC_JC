@@ -2,11 +2,29 @@
     xmlns:mvc="sap.ui.core.mvc" 
     displayBlock="true"
     xmlns="sap.m">
-
+    <App id="_IDGenApp1">
 	<Page id="frontPage"
 		showHeader="true"
 		enableScrolling="true" >
+        <Table id="_IDGenTable1" inset="false" items="{path: '/Events'}">
+            <columns>
+                <Column id="_IDGenColumn1" width="12em">
+                    <Text id="_IDGenText1" text="{Event}">
+                    </Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+                    <cells>
+                        <Text id="_IDGenText2" text="{eventID}">
+                        </Text>
+                    </cells>
+                </ColumnListItem>
+            </items>
 
+        </Table>
+
+<!--
         <content>
 
             <ObjectHeader id="header"
@@ -51,5 +69,8 @@
             </Toolbar>
             
         </content>
+-->
+
 	</Page>
+    </App>
 </mvc:View>
