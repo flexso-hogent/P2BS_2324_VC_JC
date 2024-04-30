@@ -16,7 +16,7 @@
 					</VBox>
 					<VBox id="_IDGenSpacer2" width="5%"/>
 					<VBox id="_IDGenVBox2" width="45%">
-						<Image id="_IDGenImage1" src="C:\Users\32477\Desktop\BSP\Test\P2BS_2324_VC\Back-end\app\flexso\webapp\pictures\domein model.jpg"
+						<Image id="_IDGenImage1" src="{img>/webapp/pictures/start}"
                                width="auto" 
                                alt="Placeholder image" />
 						<Text id="_IDGenText012" text="Hier komt een foto te staan" />
@@ -27,7 +27,7 @@
 				<HBox id="_IDGenHBox2" justifyContent="SpaceAround" items="{path: '/Events'}">
 					<VBox id="_IDGenVBox3" width="25%" >
 						<Image id="_IDGenImage2" 
-                            src="" 
+                            src="{img>/webapp/pictures/start}" 
                             width="auto" 
                             alt="{naam}" 
                             press="onEventClick" />
@@ -152,7 +152,7 @@
                         <Text id="_IDGenText022" text="{locatie}" />
 					</VBox>
 				</HBox>
-			<!--	
+			<!--	 
 		    <Table
                 id="EventsTable"
                 inset="false"
@@ -190,7 +190,7 @@
                 </items>
 
             </Table>
-            -->
+           -->
 		</content>	
         </Page>
     </App>
