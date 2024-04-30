@@ -8,7 +8,7 @@
     "openui5",
     "sapui5"
   ],
-  "main": "/app/flexso/webapp/index.html",
+  "main": "app/flexso/webapp/index.html",
   "dependencies": {
     "csv-parser": "^3.0.0",
     "sqlite3": "^5.1.7"
