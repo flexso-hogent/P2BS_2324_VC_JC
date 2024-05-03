@@ -45,9 +45,19 @@ sap.ui.define([
                 var oHBox = this.byId("eventsHBox");
                 var oBinding = oHBox.getBinding("items");
     
-                var oSorter = new sap.ui.model.Sorter("naam", sSelectedKey === "Descending");
+                var bDescending = (sSelectedKey === "Descending");
+                var oSorter = new Sorter("naam", bDescending);
                 oBinding.sort([oSorter]);
-            }
+            },
+            onSearch: function (oEvent) {
+                var sQuery = oEvent.getParameter("query");
+                var oHBox = this.byId("eventsHBox");
+                var oBinding = oHBox.getBinding("items");
+    
+                var oFilter = new Filter("eventName", FilterOperator.Contains, sQuery);
+                oBinding.filter([oFilter]);
+            },
+    
         });
     });
 

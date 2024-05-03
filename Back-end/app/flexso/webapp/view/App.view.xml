@@ -3,7 +3,7 @@
     displayBlock="true"
     xmlns="sap.m">
 
-    <App id="Startpage">
+    <App id="app">
         <Page id="frontPage" title="The networking hub - Connecting interests into meaningfull relationships">
            <content>
                 <HBox id="_IDGenHBox1" 
