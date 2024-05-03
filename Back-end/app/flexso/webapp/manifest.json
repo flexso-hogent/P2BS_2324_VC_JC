@@ -55,7 +55,7 @@
         "sap.ui.generic.app": {},
         "sap.ui.table": {},
         "sap.ushell": {},
-        "sap.uxap":{}
+        "sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -69,7 +69,7 @@
           "bundleName": "flexso.i18n.i18n"
         }
       },
-      "": {
+      "eventModel": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
@@ -87,39 +87,32 @@
         }
       ]
     },
-		"routing": {
-			"config": {
-				"routerClass": "sap.f.routing.Router",
-				"type": "View",
-				"viewType": "XML",
-				"path": "flexso.view",
-				"controlId": "flexibleColumnLayout",
-				"transition": "slide",
-				"bypassed": {
-          "target":"TargetApp"
-				},
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": ":layout:",
-					"name": "list",
-					"target": [
-						"list",
-						"detail"
-					]
-				},
-				{
-					"pattern": "detail/{eventID}/{layout}",
-					"name": "detail",
-					"target": [
-						"list",
-						"detail"
-					]
-				}
-			],
-			"targets": {
-    
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "flexso.view",
+        "controlId": "flexibleColumnLayout",
+        "transition": "slide",
+        "bypassed": {
+          "target": "TargetApp"
+        },
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": ":layout:",
+          "name": "list",
+          "target": ["list", "detail"]
+        },
+        {
+          "pattern": "detail/{eventID}/{layout}",
+          "name": "detail",
+          "target": ["list", "detail"]
+        }
+      ],
+      "targets": {
         "TargetApp": {
           "viewType": "XML",
           "transition": "slide",
@@ -127,16 +120,15 @@
           "viewId": "App",
           "viewName": "App"
         },
-				"list": {
-					"name": "List",
-					"controlAggregation": "beginColumnPages"
-				},
-				"detail": {
-					"name": "Detail",
-					"controlAggregation": "midColumnPages"
-				}
-			}
-		
+        "list": {
+          "name": "List",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "name": "Detail",
+          "controlAggregation": "midColumnPages"
+        }
+      }
     },
     "rootView": {
       "viewName": "flexso.view.Account",
