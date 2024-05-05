@@ -29,9 +29,9 @@ function writeToDatabase(filename, tableName, db) {
 let db = new sqlite3.Database(path.join(__dirname, 'db', 'my-events.db'));
 
 // Roep de functie writeToDatabase aan voor elk CSV-bestand
-writeToDatabase('my.event-Events.csv', 'Events', db);
-writeToDatabase('my.event-Sessions.csv', 'Sessions', db);
-writeToDatabase('my.event-Users.csv', 'Users', db);
+writeToDatabase('my.events-Events.csv', 'Events', db);
+writeToDatabase('my.events-Sessions.csv', 'Sessions', db);
+writeToDatabase('my.events-Users.csv', 'Users', db);
 
 // Sluit de databaseverbinding wanneer het proces is voltooid
 db.close();

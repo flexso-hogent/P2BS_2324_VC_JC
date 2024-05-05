@@ -54,7 +54,8 @@
           "sap.ui.comp": {},
           "sap.ui.generic.app": {},
           "sap.ui.table": {},
-          "sap.ushell": {}
+          "sap.ushell": {},
+          "sap.ui.layout": {}
         }
       },
       "contentDensities": {
@@ -121,16 +122,17 @@
           "TargetEvent": {
             "viewType": "XML",
             "viewPath": "flexso.view",
-            "viewName": "List",
-            "viewId": "List"
+            "viewName": "Overview",
+            "viewId": "Overview"
           }
         }
       },
       "rootView": {
-        "viewName": "flexso.view.App",
+        "viewName": "flexso.view.EventManager",
         "type": "XML",
+        "controllerName": "flexso.controller.EventManager",
         "async": true,
-        "id": "App"
+        "id": ""
       }
     }
   }
