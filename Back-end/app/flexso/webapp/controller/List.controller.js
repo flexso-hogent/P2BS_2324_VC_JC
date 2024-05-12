@@ -11,11 +11,18 @@ sap.ui.define([
 
 	return Controller.extend("flexso.controller.List", {
 		onInit: function () {
+			
 		},
 		onListItemPress: function () {
 			var oFCL = this.oView.getParent().getParent();
 
 			oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
+		},
+		onAddEventPress: function(oEvent) {
+			
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("eventManager")
+
 		}
 
 	});

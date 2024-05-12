@@ -4,7 +4,9 @@ entity Events {
   key eventID      : UUID;
       naam         : String;
       beschrijving : String;
-      datum        : DateTime;
+      datum        : Date;
+      beginTijd: Time;
+      eindTijd: Time;
       locatie      : String;
       sessies      : Association to many Sessions
                        on sessies.event = $self;
@@ -13,9 +15,12 @@ entity Events {
 entity Sessions {
   key sessieID     : UUID;
       naam         : String;
+      type: String;
       beschrijving : String;
       spreker      : String;
-      datum        : DateTime;
+      datum        : Date;
+      beginTijd: Time;
+      eindTijd: Time;
       lokaalnummer : String;
       event        : Association to Events;
 // aanwezigeGebruikers: Association to many Users //on aanwezigeGebruikers.sessie = $self;

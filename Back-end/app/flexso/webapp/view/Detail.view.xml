@@ -17,14 +17,17 @@
 			<ObjectPageDynamicHeaderTitle  id="_IDGenObjectPageDynamicHeaderTitle1">
 				<actions>
                     <m:ToggleButton id="_IDGenToggleButton2"
-						text="Public"
-						type="Emphasized"/>
+						text="Add session"
+						type="Emphasized"
+						press=".onAddSessionPress"/>
 					<m:ToggleButton id="_IDGenToggleButton1"
-						text="Edit"
-						type="Emphasized"/>
+						text="Edit session"
+						type="Emphasized"
+						press=".onEditSessionPress"/>
 					<m:Button id="_IDGenButton1"
-						text="Delete"
-						type="Transparent"/>
+						text="Delete session"
+						type="Transparent"
+						press=".onDeleteSessionPress"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>

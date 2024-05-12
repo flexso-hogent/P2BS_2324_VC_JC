@@ -15,7 +15,13 @@
           "type": "cds.String"
         },
         "datum": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
+        },
+        "beginTijd": {
+          "type": "cds.Time"
+        },
+        "eindTijd": {
+          "type": "cds.Time"
         },
         "locatie": {
           "type": "cds.String"
@@ -53,6 +59,9 @@
         "naam": {
           "type": "cds.String"
         },
+        "type": {
+          "type": "cds.String"
+        },
         "beschrijving": {
           "type": "cds.String"
         },
@@ -60,7 +69,13 @@
           "type": "cds.String"
         },
         "datum": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
+        },
+        "beginTijd": {
+          "type": "cds.Time"
+        },
+        "eindTijd": {
+          "type": "cds.Time"
         },
         "lokaalnummer": {
           "type": "cds.String"
@@ -118,7 +133,6 @@
     },
     "EventService.Events": {
       "kind": "entity",
-      "@readonly": true,
       "projection": {
         "from": {
           "ref": [
@@ -138,7 +152,13 @@
           "type": "cds.String"
         },
         "datum": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
+        },
+        "beginTijd": {
+          "type": "cds.Time"
+        },
+        "eindTijd": {
+          "type": "cds.Time"
         },
         "locatie": {
           "type": "cds.String"
@@ -168,7 +188,6 @@
     },
     "EventService.Sessions": {
       "kind": "entity",
-      "@readonly": true,
       "projection": {
         "from": {
           "ref": [
@@ -184,6 +203,9 @@
         "naam": {
           "type": "cds.String"
         },
+        "type": {
+          "type": "cds.String"
+        },
         "beschrijving": {
           "type": "cds.String"
         },
@@ -191,7 +213,13 @@
           "type": "cds.String"
         },
         "datum": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
+        },
+        "beginTijd": {
+          "type": "cds.Time"
+        },
+        "eindTijd": {
+          "type": "cds.Time"
         },
         "lokaalnummer": {
           "type": "cds.String"
@@ -211,7 +239,6 @@
     },
     "EventService.Users": {
       "kind": "entity",
-      "@readonly": true,
       "projection": {
         "from": {
           "ref": [

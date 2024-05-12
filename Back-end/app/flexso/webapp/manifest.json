@@ -12,8 +12,7 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.13.2",
-      "toolsId": "7519e3e7-b9e5-48a8-902f-5d2e172eade2"
+      "version": "1.13.2"
     },
     "dataSources": {
       "mainService": {
@@ -21,16 +20,14 @@
         "type": "OData",
         "settings": {
           "annotations": [],
-          "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
         }
       },
-      "V2mainService": {
+      "v2model": {
         "uri": "/odata/v2/event/",
         "type": "OData",
         "settings": {
           "annotations": [],
-          "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
       }
@@ -38,33 +35,21 @@
   },
   "sap.ui": {
     "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
     "deviceTypes": {
       "desktop": true,
       "tablet": true,
       "phone": true
     }
   },
+
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.60.0",
+      "minUI5Version": "1.123.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -110,26 +95,70 @@
         {
           "name": "RouteApp",
           "pattern": ":?query:",
-          "target": [
-            "TargetApp"
-          ]
+          "target": ["TargetApp"]
+        },
+        {
+          "name": "RouteEvent",
+          "pattern": "Event/{eventID}",
+          "target": ["TargetEvent"]
+        },
+        {
+          "name": "EventList",
+          "pattern": "events",
+          "target": ["TargetEventList"]
+        },
+        {
+          "name": "CreateEvent",
+          "pattern": "create-event",
+          "target": ["TargetCreateEvent"]
+        },
+        {
+          "name": "eventManager",
+          "pattern": "eventManager",
+          "target": ["TargetEventManager"]
         }
       ],
       "targets": {
         "TargetApp": {
           "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "App",
-          "viewName": "App"
+          "viewPath": "flexso.view",
+          "viewName": "app",
+          "viewId": "app"
+        },
+        "TargetEvent": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "Account",
+          "viewId": "Account"
+        },
+        "TargetEventList": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "EventList",
+          "viewId": "EventList",
+          "viewLevel": 1
+        },
+        "TargetCreateEvent": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "CreateEvent",
+          "viewId": "CreateEvent",
+          "viewLevel": 2
+        },
+        "TargetEventManager": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "EventManager",
+          "viewId": "EventManager",
+          "viewLevel": 2
         }
       }
     },
     "rootView": {
-      "viewName": "flexso.view.Account",
+      "viewName": "flexso.view.App",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "app"
     }
   }
 }
