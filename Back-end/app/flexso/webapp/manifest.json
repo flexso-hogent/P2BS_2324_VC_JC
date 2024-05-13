@@ -49,7 +49,13 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.f": {}
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {},
+        "sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -63,7 +69,7 @@
           "bundleName": "flexso.i18n.i18n"
         }
       },
-      "": {
+      "eventModel": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
@@ -83,34 +89,32 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
         "viewType": "XML",
-        "async": true,
-        "viewPath": "flexso.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
+        "path": "flexso.view",
+        "controlId": "flexibleColumnLayout",
+        "transition": "slide",
+        "bypassed": {
+          "target": "TargetApp"
+        },
+        "async": true
       },
       "routes": [
         {
-          "name": "RouteApp",
-          "pattern": ":?query:",
-          "target": ["TargetApp"]
+          "pattern": ":layout:",
+          "name": "list",
+          "target": ["list", "detail"]
+        },
+        {
+          "pattern": "detail/{eventID}/{layout}",
+          "name": "detail",
+          "target": ["list", "detail"]
         },
         {
           "name": "RouteEvent",
           "pattern": "Event/{eventID}",
           "target": ["TargetEvent"]
-        },
-        {
-          "name": "EventList",
-          "pattern": "events",
-          "target": ["TargetEventList"]
-        },
-        {
-          "name": "CreateEvent",
-          "pattern": "create-event",
-          "target": ["TargetCreateEvent"]
         },
         {
           "name": "eventManager",
@@ -122,8 +126,10 @@
         "TargetApp": {
           "viewType": "XML",
           "viewPath": "flexso.view",
-          "viewName": "app",
-          "viewId": "app"
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "App",
+          "viewName": "App"
         },
         "TargetEvent": {
           "viewType": "XML",
@@ -131,26 +137,21 @@
           "viewName": "Account",
           "viewId": "Account"
         },
-        "TargetEventList": {
-          "viewType": "XML",
-          "viewPath": "flexso.view",
-          "viewName": "EventList",
-          "viewId": "EventList",
-          "viewLevel": 1
-        },
-        "TargetCreateEvent": {
-          "viewType": "XML",
-          "viewPath": "flexso.view",
-          "viewName": "CreateEvent",
-          "viewId": "CreateEvent",
-          "viewLevel": 2
-        },
         "TargetEventManager": {
           "viewType": "XML",
           "viewPath": "flexso.view",
           "viewName": "EventManager",
           "viewId": "EventManager",
           "viewLevel": 2
+        },
+
+        "list": {
+          "name": "List",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "name": "Detail",
+          "controlAggregation": "midColumnPages"
         }
       }
     },
@@ -159,6 +160,7 @@
       "type": "XML",
       "async": true,
       "id": "app"
+
     }
   }
 }
