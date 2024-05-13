@@ -1,4 +1,5 @@
 <mvc:View xmlns:m="sap.m"
+	id="Account"
 	displayBlock="true"
 	height="100%"
 	xmlns="sap.f"

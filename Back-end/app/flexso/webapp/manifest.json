@@ -12,8 +12,7 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.13.2",
-      "toolsId": "7519e3e7-b9e5-48a8-902f-5d2e172eade2"
+      "version": "1.13.2"
     },
     "dataSources": {
       "mainService": {
@@ -23,29 +22,30 @@
           "annotations": [],
           "odataVersion": "4.0"
         }
+      },
+      "v2model": {
+        "uri": "/odata/v2/event/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
       }
     }
   },
   "sap.ui": {
     "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
     "deviceTypes": {
       "desktop": true,
       "tablet": true,
       "phone": true
     }
   },
+
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.60.0",
+      "minUI5Version": "1.123.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -110,16 +110,41 @@
           "pattern": "detail/{eventID}/{layout}",
           "name": "detail",
           "target": ["list", "detail"]
+        },
+        {
+          "name": "RouteEvent",
+          "pattern": "Event/{eventID}",
+          "target": ["TargetEvent"]
+        },
+        {
+          "name": "eventManager",
+          "pattern": "eventManager",
+          "target": ["TargetEventManager"]
         }
       ],
       "targets": {
         "TargetApp": {
           "viewType": "XML",
+          "viewPath": "flexso.view",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "App",
           "viewName": "App"
         },
+        "TargetEvent": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "Account",
+          "viewId": "Account"
+        },
+        "TargetEventManager": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "EventManager",
+          "viewId": "EventManager",
+          "viewLevel": 2
+        },
+
         "list": {
           "name": "List",
           "controlAggregation": "beginColumnPages"
@@ -131,10 +156,11 @@
       }
     },
     "rootView": {
-      "viewName": "flexso.view.Account",
+      "viewName": "flexso.view.App",
       "type": "XML",
       "async": true,
-      "id": "fcl"
+      "id": "app"
+
     }
   }
 }

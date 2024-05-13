@@ -33,16 +33,18 @@
 					</m:FlexBox>
 				</snappedHeading>
 				<actions>
-                    <m:ToggleButton id="_IDGenToggleButton2"
-						text="Public"
+          <m:ToggleButton id="_IDGenToggleButton2"
+						text="Add session"
 						type="Emphasized"
-						press=".onEditToggleButtonPress"/>
+						press=".onAddSessionPress"/>
 					<m:ToggleButton id="_IDGenToggleButton1"
-						text="Edit"
-						type="Emphasized"/>
+						text="Edit session"
+						type="Emphasized"
+						press=".onEditSessionPress"/>
 					<m:Button id="_IDGenButton1"
-						text="Delete"
-						type="Transparent"/>
+						text="Delete session"
+						type="Transparent"
+						press=".onDeleteSessionPress"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
