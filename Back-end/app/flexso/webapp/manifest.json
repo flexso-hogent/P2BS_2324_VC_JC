@@ -72,6 +72,16 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "v2Service": {
+        "dataSource": "v2model",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {

@@ -8,13 +8,12 @@ sap.ui.define([
 	return Controller.extend("flexso.controller.EventManager", {
 		onInit: function() {
 			var oEvent = {
-				eventID: "",
-				name: "",
-				description: "",
-				date: null,
-				startTime: null,
-				endTime: null,
-				location: ""
+				naam: "",
+				beschrijving: "",
+				datum: null,
+				starttijd: null,
+				eindtijd: null,
+				locatie: ""
 			};
 			var oModel = new JSONModel(oEvent);
 			this.getView().setModel(oModel, "eventForm");
@@ -24,8 +23,8 @@ sap.ui.define([
 			oFormData.naam = new String(oFormData.naam);
             oFormData.beschrijving = new String(oFormData.beschrijving);
             oFormData.datum = new Date(oFormData.datum);
-			oFormData.begintijd = new Time(oFormData.begintijd);
-			oFormData.eindtijd = new Time(oFormData.eindtijd);
+			oFormData.begintijd = (oFormData.begintijd);
+			oFormData.eindtijd = (oFormData.eindtijd);
             oFormData.locatie = new String(oFormData.locatie);
 
 			var oDataModel = this.getView().getModel("v2model");
