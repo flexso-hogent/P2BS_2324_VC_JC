@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="flexso.controller.Login">
+    <App id="login">
+        <pages>
+            <Page title="Login" id="loginPage">
+                <content>
+                    <Input id="usernameInput" placeholder="Username"/>
+                    <Input id="passwordInput" placeholder="Password" type="Password"/>
+                    <Button id="loginButton" text="Login" press="onLoginPress"/>
+                </content>
+            </Page>     
+        </pages>
+    </App>
+</mvc:View>
