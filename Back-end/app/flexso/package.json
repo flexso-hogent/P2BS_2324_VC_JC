@@ -10,6 +10,7 @@
     ],
     "main": "webapp/index.html",
     "dependencies": {
+      "@cap-js-community/odata-v2-adapter": "^1.12.9",
       "csv-parser": "^3.0.0",
       "sqlite3": "^5.1.7"
     },
@@ -38,6 +39,9 @@
             "url": "db/my-events.sqlite"
           }
         }
+      },
+      "cov2ap" : {
+        "plugin" : true
       }
     },
     "sapuxLayer": "CUSTOMER_BASE"

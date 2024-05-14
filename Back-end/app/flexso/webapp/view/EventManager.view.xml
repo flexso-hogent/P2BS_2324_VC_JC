@@ -36,7 +36,7 @@
                                 <m:ToggleButton id="_IDGenToggleButton1"
                                     text="Add sessions"
                                     type="Emphasized"
-                                    press=".onAddSessions"/>
+                                    press=".onAddSessionPress"/>
                             </actions>
                         </ObjectPageDynamicHeaderTitle>
 		    </headerTitle>

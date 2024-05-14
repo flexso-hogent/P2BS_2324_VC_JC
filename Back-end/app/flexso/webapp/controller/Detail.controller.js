@@ -6,13 +6,28 @@ sap.ui.define([
 
     return Controller.extend("flexso.controller.Detail", {
         onInit: function () {
-            var oRouter = this.getOwnerComponent().getRouter();
-        },
+            var oOwnerComponent = this.getOwnerComponent();
+
+            this.oRouter = oOwnerComponent.getRouter();
+            this.oModel = oOwnerComponent.getModel();
+
+            this.oRouter.getRoute("list").attachPatternMatched(this._onProductMatched, this);
+            this.oRouter.getRoute("detail").attachPatternMatched(this._onProductMatched, this);
+          },
+
+        _onProductMatched: function (oEvent) {// bind with correct item
+              this._event = oEvent.getParameter("arguments").eventID || this._event|| "event(1)"; 
+              this.getView().bindElement({
+                path: "/" + this._event,
+                model: "eventModel"
+              });
+
+            },
 
         onAddSessionPress: function() {
             // Doorverwijzing naar SessionManager om een nieuwe sessie toe te voegen
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("SessionManager");
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("sessionManager");
         },
 
         onEditSessionPress: function() {
@@ -60,7 +75,10 @@ sap.ui.define([
                 // Toon een melding aan de gebruiker dat er geen sessie is geselecteerd
                 sap.m.MessageToast.show("First select a session to delete");
             }
-        }
-        
+        },
+          onExit: function () {
+              this.oRouter.getRoute("list").detachPatternMatched(this._onProductMatched, this);
+              this.oRouter.getRoute("detail").detachPatternMatched(this._onProductMatched, this);
+            }
     });
 });

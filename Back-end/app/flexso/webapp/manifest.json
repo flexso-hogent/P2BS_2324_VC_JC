@@ -92,11 +92,7 @@
         "clearControlAggregation": false
       },
       "routes": [
-        {
-          "name": "RouteApp",
-          "pattern": ":?query:",
-          "target": ["TargetApp"]
-        },
+        
         {
           "name": "RouteEvent",
           "pattern": "Event/{eventID}",
@@ -107,24 +103,20 @@
           "pattern": "events",
           "target": ["TargetEventList"]
         },
-        {
-          "name": "CreateEvent",
-          "pattern": "create-event",
-          "target": ["TargetCreateEvent"]
-        },
+        
         {
           "name": "eventManager",
           "pattern": "eventManager",
           "target": ["TargetEventManager"]
+        },
+        {
+          "name": "sessionManager",
+          "pattern": "sessionManager",
+          "target": ["TargetSessionManager"]
         }
       ],
       "targets": {
-        "TargetApp": {
-          "viewType": "XML",
-          "viewPath": "flexso.view",
-          "viewName": "app",
-          "viewId": "app"
-        },
+        
         "TargetEvent": {
           "viewType": "XML",
           "viewPath": "flexso.view",
@@ -138,18 +130,19 @@
           "viewId": "EventList",
           "viewLevel": 1
         },
-        "TargetCreateEvent": {
-          "viewType": "XML",
-          "viewPath": "flexso.view",
-          "viewName": "CreateEvent",
-          "viewId": "CreateEvent",
-          "viewLevel": 2
-        },
+        
         "TargetEventManager": {
           "viewType": "XML",
           "viewPath": "flexso.view",
           "viewName": "EventManager",
           "viewId": "EventManager",
+          "viewLevel": 2
+        },
+        "TargetSessionManager": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "SessionManager",
+          "viewId": "SessionManager",
           "viewLevel": 2
         }
       }

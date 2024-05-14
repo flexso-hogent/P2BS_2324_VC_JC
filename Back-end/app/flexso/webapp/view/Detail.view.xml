@@ -26,7 +26,7 @@
 						press=".onEditSessionPress"/>
 					<m:Button id="_IDGenButton1"
 						text="Delete session"
-						type="Transparent"
+						type="Emphasized"
 						press=".onDeleteSessionPress"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
