@@ -25,9 +25,14 @@ sap.ui.define([
             },
 
         onAddSessionPress: function() {
+            // Haal het geselecteerde evenementID op
+            var sEventID = this._event;
+        
             // Doorverwijzing naar SessionManager om een nieuwe sessie toe te voegen
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("sessionManager");
+            oRouter.navTo("sessionManager", {
+                eventID: sEventID // Voeg het geselecteerde evenementID toe als parameter
+            });
         },
 
         onEditSessionPress: function() {

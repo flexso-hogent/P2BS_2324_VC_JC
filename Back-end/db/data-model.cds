@@ -1,7 +1,7 @@
 namespace my.events;
 
 entity Events {
-  key eventID      : UUID;
+  key eventID      : Integer @cds.autoincrement;
       naam         : String;
       beschrijving : String;
       datum        : Date;
@@ -13,7 +13,7 @@ entity Events {
 }
 
 entity Sessions {
-  key sessieID     : UUID;
+  key sessieID     : Integer @cds.autoincrement;
       naam         : String;
       type         : String;
       beschrijving : String;

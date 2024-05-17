@@ -11,8 +11,8 @@ sap.ui.define([
 				naam: "",
 				beschrijving: "",
 				datum: null,
-				starttijd: null,
-				eindtijd: null,
+				beginTijd: null,
+				eindTijd: null,
 				locatie: ""
 			};
 			var oModel = new JSONModel(oEvent);
@@ -22,9 +22,9 @@ sap.ui.define([
 			var oFormData = this.getView().getModel("eventForm").getData();
 			oFormData.naam = new String(oFormData.naam);
             oFormData.beschrijving = new String(oFormData.beschrijving);
-            oFormData.datum = new Date(oFormData.datum);
-			oFormData.begintijd = (oFormData.begintijd);
-			oFormData.eindtijd = (oFormData.eindtijd);
+            oFormData.datum = new Date(oFormData.datum).toDateString;
+			oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
+			oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;
             oFormData.locatie = new String(oFormData.locatie);
 
 			var oDataModel = this.getView().getModel("v2model");

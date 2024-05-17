@@ -45,22 +45,22 @@
                 <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
                     <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
                         <m:Label id="_IDGenLabel1" text="Name" />
-                        <m:Input id="_IDGenInput1" value="{eventForm>/name}" change="handleChange"/>
+                        <m:Input id="_IDGenInput1" value="{eventForm>/naam}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel2" text="Description" />
-                        <m:Input id="_IDGenInput2" value="{eventForm>/description}" change="handleChange"/>
+                        <m:Input id="_IDGenInput2" value="{eventForm>/beschrijving}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel3" text="Date" />
-                        <m:DatePicker id="_IDGenDatePicker1" value="{eventForm>/date}" change="handleChange" />
+                        <m:DatePicker id="_IDGenDatePicker1" value="{eventForm>/datum}" change="handleChange" />
 
                         <m:Label id="_IDGenLabel5" text="Start Time" />
-                        <m:TimePicker id="startTime" value="{eventForm>/startTime}" change="handleChange"/>
+                        <m:TimePicker id="startTime" value="{eventForm>/beginTijd}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel6" text="End Time" />
-                        <m:TimePicker id="endTime" value="{eventForm>/endTime}" change="handleChange"/>
+                        <m:TimePicker id="endTime" value="{eventForm>/eindTijd}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel4" text="Location" />
-                        <m:Input id="_IDGenInput3" value="{eventForm>/location}" change="handleChange"/>
+                        <m:Input id="_IDGenInput3" value="{eventForm>/locatie}" change="handleChange"/>
 
                     </form:SimpleForm>
                 </ObjectPageSubSection>

@@ -47,28 +47,28 @@
                     <form:content>
                         <!-- Fields for Session Details -->
                         <m:Label id="_IDGenLabel1" text="Name" />
-                        <m:Input id="sessionName" value="{sessionForm>/name}" />
+                        <m:Input id="sessionName" value="{sessionForm>/naam}" />
 
                         <m:Label id="_IDGenLabel2" text="Type" />
                         <m:Input id="sessionType" value="{sessionForm>/type}" />
 
                         <m:Label id="_IDGenLabel3" text="Description" />
-                        <m:Input id="sessionDescription" value="{sessionForm>/description}" />
+                        <m:Input id="sessionDescription" value="{sessionForm>/beschrijving}" />
 
                         <m:Label id="_IDGenLabel4" text="Speaker" />
-                        <m:Input id="sessionSpeaker" value="{sessionForm>/speaker}" />
+                        <m:Input id="sessionSpeaker" value="{sessionForm>/spreker}" />
 
                         <m:Label id="_IDGenLabel5" text="Date" />
-                        <m:DatePicker id="sessionDate" value="{sessionForm>/date}" />
+                        <m:DatePicker id="sessionDate" value="{sessionForm>/datum}" />
 
                         <m:Label id="_IDGenLabel6" text="Start Time" />
-                        <m:TimePicker id="startTime" value="{sessionForm>/startTime}" />
+                        <m:TimePicker id="startTime" value="{sessionForm>/beginTijd}" />
 
                         <m:Label id="_IDGenLabel7" text="End Time" />
-                        <m:TimePicker id="endTime" value="{sessionForm>/endTime}" />
+                        <m:TimePicker id="endTime" value="{sessionForm>/eindTijd}" />
 
                         <m:Label id="_IDGenLabel8" text="Room" />
-                        <m:Input id="sessionRoom" value="{sessionForm>/room}" />
+                        <m:Input id="sessionRoom" value="{sessionForm>/lokaalnummer}" />
                     </form:content>
                 </form:SimpleForm>
             </uxap:ObjectPageSubSection>
