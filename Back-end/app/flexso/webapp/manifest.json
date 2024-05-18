@@ -111,16 +111,7 @@
         "async": true
       },
       "routes": [
-        {
-          "pattern": ":layout:",
-          "name": "list",
-          "target": ["list", "detail"]
-        },
-        {
-          "pattern": "detail/{eventID}/{layout}",
-          "name": "detail",
-          "target": ["list", "detail"]
-        },
+       
         {
           "name": "RouteEvent",
           "pattern": "Event/{eventID}",
@@ -141,6 +132,16 @@
           "name": "sessionManager",
           "pattern": "sessionManager",
           "target": ["TargetSessionManager"]
+        },
+        {
+          "pattern": ":layout:",
+          "name": "list",
+          "target": ["list", "detail"]
+        },
+        {
+          "pattern": "detail/{eventID}/{layout}",
+          "name": "detail",
+          "target": ["list", "detail"]
         }
       ],
       "targets": {
@@ -163,6 +164,15 @@
           "viewPath": "flexso.view",
           "viewName": "EventManager",
           "viewId": "EventManager",
+          "controlAggregation": "beginColumnPages",
+          "viewLevel": 2
+        },
+        "TargetSessionManager": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "SessionManager",
+          "viewId": "SessionManager",
+          "controlAggregation": "beginColumnPages",
           "viewLevel": 2
         },
 
