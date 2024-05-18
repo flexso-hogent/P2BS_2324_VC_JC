@@ -24,7 +24,7 @@ sap.ui.define(
         this.oRouter = this.getOwnerComponent().getRouter();
 
         var oView = this.getView();
-
+        sessionStorage.setItem("status","Organisator");
         if(sessionStorage.getItem('status') != 'Organisator'){
             oView.byId("addEvent").setVisible(false);
       

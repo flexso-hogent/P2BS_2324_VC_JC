@@ -134,6 +134,11 @@
           "target": ["TargetSessionManager"]
         },
         {
+          "name": "account",
+          "pattern": "account",
+          "target": ["TargetAccount"]
+        },
+        {
           "pattern": ":layout:",
           "name": "list",
           "target": ["list", "detail"]
@@ -175,6 +180,12 @@
           "controlAggregation": "beginColumnPages",
           "viewLevel": 2
         },
+        "TargetAccount":{
+          
+          "viewName": "Account",
+          "viewId": "Account",
+          "controlAggregation": "beginColumnPages"
+        },
 
         "list": {
           "name": "List",
@@ -187,7 +198,7 @@
       }
     },
     "rootView": {
-      "viewName": "flexso.view.Account",
+      "viewName": "flexso.view.Login",
       
       "type": "XML",
       "async": true,
