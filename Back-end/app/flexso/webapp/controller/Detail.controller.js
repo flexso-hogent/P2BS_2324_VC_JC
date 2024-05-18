@@ -13,10 +13,18 @@ sap.ui.define([
 
             this.oRouter.getRoute("list").attachPatternMatched(this._onProductMatched, this);
             this.oRouter.getRoute("detail").attachPatternMatched(this._onProductMatched, this);
+
+            var oView = this.getView();
+
+            if(sessionStorage.getItem('status') != 'Organisator'){
+                oView.byId("addSession").setVisible(false);
+                oView.byId("editEvent").setVisible(false);
+                oView.byId("deleteEvent").setVisible(false);
+            }
           },
 
         _onProductMatched: function (oEvent) {// bind with correct item
-              this._event = oEvent.getParameter("arguments").eventID || this._event|| "event(1)"; 
+              this._event = oEvent.getParameter("arguments").eventID || this._event|| "Event(1)"; 
               this.getView().bindElement({
                 path: "/" + this._event,
                 model: "eventModel"

@@ -21,7 +21,7 @@
 							<Text id="_IDGenText1" text="Event"/>
 						</Column>
 						<Column id="_IDGenColumn2"	hAlign="End">
-                  <Button id="_IDGenButton2"
+                  <Button id="addEvent"
                       text="+"
                       type="Emphasized"
                       press=".onAddEventPress"/> 

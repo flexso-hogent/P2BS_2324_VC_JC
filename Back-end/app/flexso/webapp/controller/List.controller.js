@@ -22,6 +22,13 @@ sap.ui.define(
     return Controller.extend("flexso.controller.List", {
       onInit: function () {
         this.oRouter = this.getOwnerComponent().getRouter();
+
+        var oView = this.getView();
+
+        if(sessionStorage.getItem('status') != 'Organisator'){
+            oView.byId("addEvent").setVisible(false);
+      
+        }
       },
       onListItemPress: function (oEvent) {
         var productPath = oEvent
