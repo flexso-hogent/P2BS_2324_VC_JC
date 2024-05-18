@@ -8,13 +8,12 @@ sap.ui.define([
 	return Controller.extend("flexso.controller.EventManager", {
 		onInit: function() {
 			var oEvent = {
-				eventID: "",
-				name: "",
-				description: "",
-				date: null,
-				startTime: null,
-				endTime: null,
-				location: ""
+				naam: "",
+				beschrijving: "",
+				datum: null,
+				beginTijd: null,
+				eindTijd: null,
+				locatie: ""
 			};
 			var oModel = new JSONModel(oEvent);
 			this.getView().setModel(oModel, "eventForm");
@@ -23,9 +22,9 @@ sap.ui.define([
 			var oFormData = this.getView().getModel("eventForm").getData();
 			oFormData.naam = new String(oFormData.naam);
             oFormData.beschrijving = new String(oFormData.beschrijving);
-            oFormData.datum = new Date(oFormData.datum);
-			//oFormData.begintijd = new Time(oFormData.begintijd);
-			//oFormData.eindtijd = new Time(oFormData.eindtijd);
+            oFormData.datum = new Date(oFormData.datum).toDateString;
+			oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
+			oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;
             oFormData.locatie = new String(oFormData.locatie);
 
 			var oDataModel = this.getView().getModel("v2model");
@@ -38,6 +37,11 @@ sap.ui.define([
 					MessageBox.error("Error while creating the event");
 				}
 			});
-		}
+		},
+        onAddSessionPress: function() {
+            // Doorverwijzing naar SessionManager om een nieuwe sessie toe te voegen
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("sessionManager");
+        }
 	});
 });

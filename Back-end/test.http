@@ -2,7 +2,7 @@
 #
 # Browse Events
 #
-GET http://localhost:4004/odata/v4/event/Evenementen?
+GET http://localhost:4004/odata/v4/event/Events?
   # &$select=naam,datum,locatie
   # &sap-language=en
 
@@ -10,16 +10,43 @@ GET http://localhost:4004/odata/v4/event/Evenementen?
 #
 # Get Session with SessieID 1
 #
-GET http://localhost:4004/odata/v4/event/Sessies(1)
+GET http://localhost:4004/odata/v4/event/Sessions(1)
 
 ###
 #
 # Update Gebruikers with mail john.doe@example.com
 #
-POST http://localhost:4004/odata/v4/event/Gebruikers
+POST http://localhost:4004/odata/v4/event/Users
 Content-Type: application/json
 
 {"mail": 101, "voornaam": "Joe"}
 
+### Create Event
+POST http://localhost:4004/odata/v2/event/Events
+Content-Type: application/json
+ 
+{
+    "naam": "Tom",
+    "beschrijving": "tafsad",
+    "datum": "2024-05-12",
+    "beginTijd": "13:47:28",
+    "eindTijd": "13:47:30",
+    "locatie": "undefined"
+}
 
+### Create Event
+POST http://localhost:4004/odata/v2/event/Sessions
+Content-Type: application/json
+ 
+{
+    "naam": "Test",
+    "type": "workshop",
+    "beschrijving": "tafsad",
+    "spreker": "test",
+    "datum": "2024-05-12",
+    "beginTijd": "13:47:28",
+    "eindTijd": "13:47:30",
+    "lokaalnummer": "A2"
+    
+}
 

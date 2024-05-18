@@ -78,6 +78,16 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "v2model": {
+        "dataSource": "v2model",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {
@@ -117,9 +127,20 @@
           "target": ["TargetEvent"]
         },
         {
+          "name": "EventList",
+          "pattern": "events",
+          "target": ["TargetEventList"]
+        },
+        
+        {
           "name": "eventManager",
           "pattern": "eventManager",
           "target": ["TargetEventManager"]
+        },
+        {
+          "name": "sessionManager",
+          "pattern": "sessionManager",
+          "target": ["TargetSessionManager"]
         }
       ],
       "targets": {
@@ -156,6 +177,7 @@
       }
     },
     "rootView": {
+      "viewName": "flexso.view.Login",
       "viewName": "flexso.view.Login",
       "type": "XML",
       "async": true,

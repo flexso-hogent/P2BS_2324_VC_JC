@@ -1,26 +1,26 @@
 namespace my.events;
 
 entity Events {
-  key eventID      : Int16;
+  key eventID      : Integer @cds.autoincrement;
       naam         : String;
       beschrijving : String;
       datum        : Date;
-      beginTijd: Time;
-      eindTijd: Time;
+      beginTijd    : Time;
+      eindTijd     : Time;
       locatie      : String;
       sessies      : Association to many Sessions
                        on sessies.event = $self;
 }
 
 entity Sessions {
-  key sessieID     : Int16;
+  key sessieID     : Integer @cds.autoincrement;
       naam         : String;
-      type: String;
+      type         : String;
       beschrijving : String;
       spreker      : String;
       datum        : Date;
-      beginTijd: Time;
-      eindTijd: Time;
+      beginTijd    : Time;
+      eindTijd     : Time;
       lokaalnummer : String;
       event        : Association to Events;
 // aanwezigeGebruikers: Association to many Users //on aanwezigeGebruikers.sessie = $self;
