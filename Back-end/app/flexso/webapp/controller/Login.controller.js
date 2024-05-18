@@ -11,7 +11,9 @@ sap.ui.define([
         return Controller.extend("flexso.controller.App", {
 
             onInit: function(){
-                //TODO: route to start page if sessionStorage already contains user info
+                if(sessionStorage.getItem('user')){
+                    //TODO: route to start page if a user is already in storage
+                }
             },
 
             onLoginPress: function() {
@@ -35,14 +37,14 @@ sap.ui.define([
                         if(password == oData.voornaam){
                             sessionStorage.setItem('user',mail);
                             sessionStorage.setItem('status',oData.rol);
-                            //TODO: route to the next page
+                            //TODO: route to startpage after succesfully logging in
 
                         }else{
-                            //TODO: show error, messagetoast?
+                            //TODO: show error wrong login information, messagetoast?
                         }
                     },
                     error: function(oError){
-                        mailExists = false;
+                        //TODO: show error wrong login information, messagetoast?
                     }
                  })
               
