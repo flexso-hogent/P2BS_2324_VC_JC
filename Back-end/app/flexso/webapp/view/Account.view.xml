@@ -5,7 +5,7 @@
 	xmlns="sap.f"
 	xmlns:mvc="sap.ui.core.mvc"
 	controllerName="flexso.controller.Account"
-	id="Account">
+	>
 	
 		<FlexibleColumnLayout
 		id="flexibleColumnLayout"

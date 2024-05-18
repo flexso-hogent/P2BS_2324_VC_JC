@@ -177,8 +177,8 @@
       }
     },
     "rootView": {
-      "viewName": "flexso.view.Login",
-      "viewName": "flexso.view.Login",
+      "viewName": "flexso.view.Account",
+      
       "type": "XML",
       "async": true,
       "id": "app"
