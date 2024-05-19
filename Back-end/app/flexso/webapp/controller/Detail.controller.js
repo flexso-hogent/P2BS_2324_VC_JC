@@ -6,6 +6,8 @@ sap.ui.define([
 
     return Controller.extend("flexso.controller.Detail", {
         onInit: function () {
+            
+            
             var oOwnerComponent = this.getOwnerComponent();
             
             this.oRouter = oOwnerComponent.getRouter();
@@ -24,7 +26,8 @@ sap.ui.define([
           },
 
         _onProductMatched: function (oEvent) {// bind with correct item
-              this._event = oEvent.getParameter("arguments").eventID || this._event|| "Event(1)"; 
+              
+              this._event = oEvent.getParameter("arguments").eventID || this._event|| "Event(1)" 
               this.getView().bindElement({
                 path: "/" + this._event,
                 model: "eventModel"

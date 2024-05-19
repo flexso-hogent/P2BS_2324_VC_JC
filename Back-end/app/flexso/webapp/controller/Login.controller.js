@@ -12,12 +12,6 @@ sap.ui.define([
         return Controller.extend("flexso.controller.App", {
 
             onInit: function(){
-                sessionStorage.clear();
-                if(sessionStorage.getItem('user')){
-                    //TODO: route to start page if a user is already in storage
-                    var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                    oRouter.navTo("account")
-                }
             },
 
             onLoginPress: function() {

@@ -8,7 +8,11 @@ sap.ui.define([
 		onInit: function () {
 			this.oOwnerComponent = this.getOwnerComponent();
 			this.oRouter = this.oOwnerComponent.getRouter();
+			if(!sessionStorage.getItem("status")){
+				this.oRouter.navTo("login")
+			};
 			this.oRouter.attachRouteMatched(this.onRouteMatched, this);
+			
 		},
 
 		onRouteMatched: function (oEvent) {//TODO: aanpassen aan ons model

@@ -106,7 +106,7 @@
         "controlId": "flexibleColumnLayout",
         "transition": "slide",
         "bypassed": {
-          "target": "TargetApp"
+          "target": "account"
         },
         "async": true
       },
@@ -137,6 +137,11 @@
           "name": "account",
           "pattern": "account",
           "target": ["TargetAccount"]
+        },
+        {
+          "name": "login",
+          "pattern": "login",
+          "target":["Login"]
         },
         {
           "pattern": ":layout:",
@@ -180,10 +185,15 @@
           "controlAggregation": "beginColumnPages",
           "viewLevel": 2
         },
-        "TargetAccount":{
-          
+        "TargetAccount": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
           "viewName": "Account",
           "viewId": "Account",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Login": {
+          "name": "Login",
           "controlAggregation": "beginColumnPages"
         },
 
@@ -198,8 +208,7 @@
       }
     },
     "rootView": {
-      "viewName": "flexso.view.Login",
-      
+      "viewName": "flexso.view.Account",
       "type": "XML",
       "async": true,
       "id": "app"
