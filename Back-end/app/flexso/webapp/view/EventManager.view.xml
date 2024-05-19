@@ -1,49 +1,51 @@
 <mvc:View xmlns:table="sap.ui.table"
-	xmlns="sap.uxap"
-	xmlns:m="sap.m"
-	xmlns:f="sap.f"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:mvc="sap.ui.core.mvc"
-	controllerName="flexso.controller.EventManager"
-	id="EventManager">
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="flexso.controller.EventManager"
+    id="EventManager">
     <ObjectPageLayout
-            id="ObjectPageLayout"
-            showTitleInHeaderContent="true"
-            alwaysShowContentHeader="false"
-            preserveHeaderStateOnScroll="false"
-            headerContentPinnable="true"
-            isChildPage="true"
-            upperCaseAnchorBar="false">
-            <headerTitle>
-        
-                <ObjectPageDynamicHeaderTitle  id="_IDGenObjectPageDynamicHeaderTitle1">
-                            <expandedHeading>
-                                <m:Title id="_IDGenTitle1" text="Create event" wrapping="true" class="sapUiSmallMarginEnd"/>
-                            </expandedHeading>
-                            <snappedHeading>
-                                <m:FlexBox id="_IDGenFlexBox2" wrap="Wrap" fitContainer="true" alignItems="Center">
-                                    <m:FlexBox id="_IDGenFlexBox3" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
-                                        
-                                        <m:Title id="_IDGenTitle2" text="{eventForm>naam}" wrapping="true"/>
-                                    </m:FlexBox>
-                                </m:FlexBox>
-                            </snappedHeading>
-                            <actions>
-                                <m:ToggleButton id="_IDGenToggleButton2"
-                                    text="Save event"
-                                    type="Emphasized"
-                                    press=".handleEventSavePress"/>
-                                <m:ToggleButton id="_IDGenToggleButton1"
-                                    text="Add sessions"
-                                    type="Emphasized"
-                                    press=".onAddSessionPress"/>
-                            </actions>
-                        </ObjectPageDynamicHeaderTitle>
-		    </headerTitle>
-        
-            <ObjectPageSection id="_IDGenObjectPageSection1" title="Event Details">
-                <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
-                    <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1">
+                <expandedHeading>
+                    <m:Title id="_IDGenTitle1" text="Create event" wrapping="true" class="sapUiSmallMarginEnd"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox id="_IDGenFlexBox2" wrap="Wrap" fitContainer="true" alignItems="Center">
+                        <m:FlexBox id="_IDGenFlexBox3" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+                            <m:Title id="_IDGenTitle2" text="{eventForm>naam}" wrapping="true"/>
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </snappedHeading>
+                <actions>
+                    <m:ToggleButton id="_IDGenToggleButton2"
+                        text="Save event"
+                        type="Emphasized"
+                        press=".handleEventSavePress"/>
+                    <m:ToggleButton id="_IDGenToggleButton1"
+                        text="Add sessions"
+                        type="Emphasized"
+                        press=".onAddSessionPress"/>
+                    <m:Button id="buttonCancelEvent"
+                        text="Cancel"
+                        press=".handleCancelPress"/>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <ObjectPageSection id="_IDGenObjectPageSection1" title="Event Details">
+            <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
+                <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
+                    <form:content>
                         <m:Label id="_IDGenLabel1" text="Name" />
                         <m:Input id="_IDGenInput1" value="{eventForm>/naam}" change="handleChange"/>
 
@@ -51,7 +53,7 @@
                         <m:Input id="_IDGenInput2" value="{eventForm>/beschrijving}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel3" text="Date" />
-                        <m:DatePicker id="_IDGenDatePicker1" value="{eventForm>/datum}" change="handleChange" />
+                        <m:DatePicker id="_IDGenDatePicker1" value="{eventForm>/datum}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel5" text="Start Time" />
                         <m:TimePicker id="startTime" value="{eventForm>/beginTijd}" change="handleChange"/>
@@ -61,9 +63,9 @@
 
                         <m:Label id="_IDGenLabel4" text="Location" />
                         <m:Input id="_IDGenInput3" value="{eventForm>/locatie}" change="handleChange"/>
-
-                    </form:SimpleForm>
-                </ObjectPageSubSection>
-            </ObjectPageSection>
+                    </form:content>
+                </form:SimpleForm>
+            </ObjectPageSubSection>
+        </ObjectPageSection>
     </ObjectPageLayout>
 </mvc:View>

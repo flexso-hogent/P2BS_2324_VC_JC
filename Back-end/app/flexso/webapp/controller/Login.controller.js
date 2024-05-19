@@ -41,12 +41,12 @@ sap.ui.define([
                             oRouter.navTo("account")
                         }else{
                             //TODO: show error wrong login information, messagetoast?
-                            sap.m.MessageToast.show("Try again");;
+                            sap.m.MessageToast.show("Try again");
                         }
                     },
                     error: function(oError){
                         //TODO: show error wrong login information, messagetoast?
-                        MessageBox.error("Error");
+                        sap.m.MessageToast.show("Error");
                     }
                  })
               

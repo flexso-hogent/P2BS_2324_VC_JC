@@ -33,7 +33,7 @@
 					</m:FlexBox>
 				</snappedHeading>
 				<actions>
-          <m:ToggleButton id="addSession"
+          			<m:ToggleButton id="addSession"
 						text="Add session"
 						type="Emphasized"
 						press=".onAddSessionPress"/>
@@ -85,29 +85,33 @@
 			<ObjectPageSection id="_IDGenObjectPageSection3" title="Sessions">
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection3" >
-							<m:Table id="eventsTable"
-					inset="false"
-					items="{eventModel>sessies}"
-					class="sapFDynamicPageAlignContent"
-					width="auto">
-					<m:columns>
-						<m:Column id="_IDGenColumn1"
-							width="12em">
-							<m:Text id="_IDGenText2"
-								text="Product"/>
-						</m:Column>
-					</m:columns>
-					<m:items>
-						<m:ColumnListItem id="_IDGenColumnListItem1">
-							<m:cells>
-								<m:ObjectIdentifier id="_IDGenObjectIdentifier1"
-									title="{path: 'naam', model: 'eventModel' }"
-									text="{eventModel>lokaalnummer}"/>
-
-							</m:cells>
-						</m:ColumnListItem>
-					</m:items>
-				</m:Table>
+						<m:Table id="eventsTable"
+							inset="false"
+							items="{eventModel>sessies}"
+							class="sapFDynamicPageAlignContent"
+							width="auto"
+							delete=".onDeleteSessionPress"
+							itemPress=".onSessionSelect">
+							<m:columns>
+								<m:Column id="_IDGenColumn1"
+									width="12em">
+									
+								</m:Column>
+								<m:Column id="_IDGenColumn2" />
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem id="_IDGenColumnListItem1" type="Active" press=".onSessionSelect">
+									<m:cells>
+										<m:ObjectIdentifier id="_IDGenObjectIdentifier1"
+											title="{path: 'naam', model: 'eventModel' }"
+											text="{eventModel>lokaalnummer}"/>
+										<m:HBox id="_IDGenHBox1" justifyContent="End">
+                                			<m:Button id="registerButton" text="Register" press=".onRegisterPress" />
+                            			</m:HBox>
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
 
 					</ObjectPageSubSection>
 				</subSections>
@@ -117,7 +121,9 @@
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection2">
 						<blocks>
-							<m:Text id="text2" text="test2"></m:Text>
+							<m:List id="participantsList" items="{path: 'eventModel>/SelectedSession/participants'}">
+								<m:StandardListItem id="_IDGenStandardListItem1" title="{eventModel>}" />
+							</m:List>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

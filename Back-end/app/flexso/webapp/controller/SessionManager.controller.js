@@ -1,48 +1,93 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageBox"
-], function(Controller, JSONModel, MessageBox) {
-	"use strict";
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox",
+    "sap/ui/core/routing/History"
+], function(Controller, JSONModel, MessageBox, History) {
+    "use strict";
 
-	return Controller.extend("flexso.controller.SessionManager", {
-		onInit: function() {
-			var oSession = {
-				
-				naam: "",
-				type: "",
-				beschrijving: "",
-				spreker: "",
-				datum: null,
-				beginTijd: null,
-				eindTijd: null,
-				lokaalnummer: "",
-				//event_eventID: ""
-			};
-			var oModel = new JSONModel(oSession);
-			this.getView().setModel(oModel, "sessionForm");
-		},
-		handleSessionSavePress: function() {
-			var oFormData = this.getView().getModel("sessionForm").getData();
-			oFormData.naam = new String(oFormData.naam);
-			oFormData.type = new String(oFormData.type);
-            oFormData.beschrijving = new String(oFormData.beschrijving);
-			oFormData.spreker = new String(oFormData.spreker);
-			oFormData.datum = new Date(oFormData.datum).toDateString;
-			oFormData.beginTijd = (oFormData.begintijd);
-			oFormData.eindTijd = (oFormData.eindtijd);
-			oFormData.lokaalnummer = new String(oFormData.lokaalnummer);
+    return Controller.extend("flexso.controller.SessionManager", {
+        onInit: function() {
+            var oSession = {
+                naam: "",
+                type: "",
+                beschrijving: "",
+                spreker: "",
+                datum: null,
+                beginTijd: null,
+                eindTijd: null,
+                lokaalnummer: ""
+            };
+            var oModel = new JSONModel(oSession);
+            this.getView().setModel(oModel, "sessionForm");
 
-			var oDataModel = this.getView().getModel("v2model");
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("sessionManager").attachPatternMatched(this._onObjectMatched, this);
+        },
 
-			oDataModel.create("/Sessions", oFormData, {
-				success: function(data, response) {
-					MessageBox.success("Session was created successfully");
-				},
-				error: function(error) {
-					MessageBox.error("Error while creating the session");
-				}
-			});
-		}
-	});
+        _onObjectMatched: function(oEvent) {
+            var sSessionId = oEvent.getParameter("arguments").sessionId;
+            if (sSessionId) {
+                this._loadSessionData(sSessionId);
+            }
+        },
+
+        _loadSessionData: function(sSessionId) {
+            var oDataModel = this.getView().getModel("v2model");
+            var sPath = "/Sessions('" + sSessionId + "')";
+            oDataModel.read(sPath, {
+                success: function(oData) {
+                    var oModel = new JSONModel(oData);
+                    this.getView().setModel(oModel, "sessionForm");
+                }.bind(this),
+                error: function(oError) {
+                    MessageBox.error("Error loading session data");
+                }
+            });
+        },
+
+        handleSessionSavePress: function() {
+            var oFormData = this.getView().getModel("sessionForm").getData();
+            var oDataModel = this.getView().getModel("v2model");
+
+            if (oFormData.id) {
+                var sPath = "/Sessions('" + oFormData.id + "')";
+                oDataModel.update(sPath, oFormData, {
+                    success: function() {
+                        MessageBox.success("Session was updated successfully");
+                        this._navBack();
+                    }.bind(this),
+                    error: function() {
+                        MessageBox.error("Error while updating the session");
+                    }
+                });
+            } else {
+                oDataModel.create("/Sessions", oFormData, {
+                    success: function() {
+                        MessageBox.success("Session was created successfully");
+                        this._navBack();
+                    }.bind(this),
+                    error: function() {
+                        MessageBox.error("Error while creating the session");
+                    }
+                });
+            }
+        },
+
+        handleCancelPress: function() {
+            this._navBack();
+        },
+
+        _navBack: function() {
+            var oHistory = History.getInstance();
+            var sPreviousHash = oHistory.getPreviousHash();
+
+            if (sPreviousHash !== undefined) {
+                window.history.go(-1);
+            } else {
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("account", {}, true);
+            }
+        }
+    });
 });

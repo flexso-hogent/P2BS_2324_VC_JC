@@ -113,6 +113,11 @@
       "routes": [
        
         {
+          "name": "app",
+          "pattern": "app",
+          "target": ["TargetApp"]
+        },
+        {
           "name": "RouteEvent",
           "pattern": "Event/{eventID}",
           "target": ["TargetEvent"]
@@ -139,11 +144,6 @@
           "target": ["TargetAccount"]
         },
         {
-          "name": "login",
-          "pattern": "login",
-          "target":["Login"]
-        },
-        {
           "pattern": ":layout:",
           "name": "list",
           "target": ["list", "detail"]
@@ -161,7 +161,8 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "App",
-          "viewName": "App"
+          "viewName": "App",
+          "controlAggregation": "beginColumnPages"
         },
         "TargetEvent": {
           "viewType": "XML",
@@ -199,10 +200,12 @@
 
         "list": {
           "name": "List",
+          "id": "List",
           "controlAggregation": "beginColumnPages"
         },
         "detail": {
           "name": "Detail",
+          "id":"Detail",
           "controlAggregation": "midColumnPages"
         }
       }

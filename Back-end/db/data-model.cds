@@ -23,7 +23,7 @@ entity Sessions {
       eindTijd     : Time;
       lokaalnummer : String;
       event        : Association to Events;
-// aanwezigeGebruikers: Association to many Users //on aanwezigeGebruikers.sessie = $self;
+      deelnemers   : Association to many Users //on deelnemers.sessie = $self;
 }
 
 entity Users {
