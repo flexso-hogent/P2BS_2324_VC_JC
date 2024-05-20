@@ -10,6 +10,7 @@
   ],
   "main": "webapp/index.html",
   "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.12.9",
     "csv-parser": "^3.0.0",
     "sqlite3": "^5.1.7"
   },

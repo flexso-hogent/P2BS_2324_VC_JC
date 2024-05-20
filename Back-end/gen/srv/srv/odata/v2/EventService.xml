@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="EventService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Events" EntityType="EventService.Events"/>
+        <EntitySet Name="Sessions" EntityType="EventService.Sessions"/>
+        <EntitySet Name="Users" EntityType="EventService.Users"/>
+        <AssociationSet Name="Sessions_event" Association="EventService.Sessions_event">
+          <End Role="Sessions" EntitySet="Sessions"/>
+          <End Role="Events" EntitySet="Events"/>
+        </AssociationSet>
+      </EntityContainer>
+      <EntityType Name="Events">
+        <Key>
+          <PropertyRef Name="eventID"/>
+        </Key>
+        <Property Name="eventID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="naam" Type="Edm.String"/>
+        <Property Name="beschrijving" Type="Edm.String"/>
+        <Property Name="datum" Type="Edm.DateTime" sap:display-format="Date"/>
+        <Property Name="beginTijd" Type="Edm.Time"/>
+        <Property Name="eindTijd" Type="Edm.Time"/>
+        <Property Name="locatie" Type="Edm.String"/>
+        <NavigationProperty Name="sessies" Relationship="EventService.Sessions_event" FromRole="Events" ToRole="Sessions"/>
+      </EntityType>
+      <EntityType Name="Sessions">
+        <Key>
+          <PropertyRef Name="sessieID"/>
+        </Key>
+        <Property Name="sessieID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="naam" Type="Edm.String"/>
+        <Property Name="type" Type="Edm.String"/>
+        <Property Name="beschrijving" Type="Edm.String"/>
+        <Property Name="spreker" Type="Edm.String"/>
+        <Property Name="datum" Type="Edm.DateTime" sap:display-format="Date"/>
+        <Property Name="beginTijd" Type="Edm.Time"/>
+        <Property Name="eindTijd" Type="Edm.Time"/>
+        <Property Name="lokaalnummer" Type="Edm.String"/>
+        <NavigationProperty Name="event" Relationship="EventService.Sessions_event" FromRole="Sessions" ToRole="Events"/>
+        <Property Name="event_eventID" Type="Edm.Int32"/>
+      </EntityType>
+      <EntityType Name="Users">
+        <Key>
+          <PropertyRef Name="mail"/>
+        </Key>
+        <Property Name="mail" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="voornaam" Type="Edm.String" MaxLength="50"/>
+        <Property Name="achternaam" Type="Edm.String" MaxLength="50"/>
+        <Property Name="bedrijf" Type="Edm.String" MaxLength="100"/>
+        <Property Name="titel" Type="Edm.String" MaxLength="50"/>
+        <Property Name="stad" Type="Edm.String" MaxLength="50"/>
+        <Property Name="rol" Type="Edm.String"/>
+      </EntityType>
+      <Association Name="Sessions_event">
+        <End Role="Sessions" Type="EventService.Sessions" Multiplicity="*"/>
+        <End Role="Events" Type="EventService.Events" Multiplicity="0..1"/>
+        <ReferentialConstraint>
+          <Principal Role="Events">
+            <PropertyRef Name="eventID"/>
+          </Principal>
+          <Dependent Role="Sessions">
+            <PropertyRef Name="event_eventID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

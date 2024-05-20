@@ -32,6 +32,7 @@ let db = new sqlite3.Database(path.join(__dirname, 'db', 'my-events.db'));
 writeToDatabase('my.event-Events.csv', 'Events', db);
 writeToDatabase('my.event-Sessions.csv', 'Sessions', db);
 writeToDatabase('my.event-Users.csv', 'Users', db);
+writeToDatabase('my.event-SessionParticipants.csv', 'SessionParticipants', db);
 
 // Sluit de databaseverbinding wanneer het proces is voltooid
 db.close();

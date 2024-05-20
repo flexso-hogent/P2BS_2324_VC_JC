@@ -21,7 +21,7 @@
         <Key>
           <PropertyRef Name="eventID"/>
         </Key>
-        <Property Name="eventID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="eventID" Type="Edm.Int32" Nullable="false"/>
         <Property Name="naam" Type="Edm.String"/>
         <Property Name="beschrijving" Type="Edm.String"/>
         <Property Name="datum" Type="Edm.Date"/>
@@ -34,7 +34,7 @@
         <Key>
           <PropertyRef Name="sessieID"/>
         </Key>
-        <Property Name="sessieID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="sessieID" Type="Edm.Int32" Nullable="false"/>
         <Property Name="naam" Type="Edm.String"/>
         <Property Name="type" Type="Edm.String"/>
         <Property Name="beschrijving" Type="Edm.String"/>
@@ -46,7 +46,7 @@
         <NavigationProperty Name="event" Type="EventService.Events" Partner="sessies">
           <ReferentialConstraint Property="event_eventID" ReferencedProperty="eventID"/>
         </NavigationProperty>
-        <Property Name="event_eventID" Type="Edm.Guid"/>
+        <Property Name="event_eventID" Type="Edm.Int32"/>
       </EntityType>
       <EntityType Name="Users">
         <Key>
@@ -60,12 +60,6 @@
         <Property Name="stad" Type="Edm.String" MaxLength="50"/>
         <Property Name="rol" Type="Edm.String"/>
       </EntityType>
-      <Annotations Target="EventService.Events/eventID">
-        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
-      </Annotations>
-      <Annotations Target="EventService.Sessions/sessieID">
-        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
-      </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
