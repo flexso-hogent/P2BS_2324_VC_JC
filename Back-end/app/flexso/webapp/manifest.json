@@ -106,12 +106,13 @@
         "controlId": "flexibleColumnLayout",
         "transition": "slide",
         "bypassed": {
-          "target": "account"
+          "target": "TargetAccount"
         },
         "async": true
       },
       "routes": [
-       
+        
+        
         {
           "name": "login",
           "pattern": "login",
@@ -144,11 +145,6 @@
           "target": ["TargetSessionManager"]
         },
         {
-          "name": "account",
-          "pattern": "account",
-          "target": ["TargetAccount"]
-        },
-        {
           "pattern": ":layout:",
           "name": "list",
           "target": ["list", "detail"]
@@ -157,6 +153,11 @@
           "pattern": "detail/{eventID}/{layout}",
           "name": "detail",
           "target": ["list", "detail"]
+        },
+        {
+          "name": "account",
+          "pattern": "",
+          "target": ["TargetAccount"]
         }
       ],
       "targets": {

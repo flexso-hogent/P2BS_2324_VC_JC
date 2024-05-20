@@ -23,7 +23,6 @@ sap.ui.define([
             },
 
             checkMail: function(mail,password) {
-                console.log(mail, password);
                 var oModel = this.getOwnerComponent().getModel("v2model");
                 var sUrl = `/Users(mail='${mail}')`;
                 var mailExists = false;
@@ -34,19 +33,20 @@ sap.ui.define([
                         mailExists = true;
                         
                         if(password == oData.voornaam){
+                            console.log("login success");
                             sessionStorage.setItem('user',mail);
                             sessionStorage.setItem('status',oData.rol);
                             //TODO: route to startpage after succesfully logging in
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                            oRouter.navTo("account")
+                            oRouter.navTo("account")//TODO: needs to navigate to the root view somehow?
                         }else{
                             //TODO: show error wrong login information, messagetoast?
-                            sap.m.MessageToast.show("Try again");
+                            sap.m.MessageToast.show("Try again");;
                         }
                     },
                     error: function(oError){
                         //TODO: show error wrong login information, messagetoast?
-                        sap.m.MessageToast.show("Error");
+                        MessageBox.error("Error");
                     }
                  })
               
