@@ -5,8 +5,9 @@
       "kind": "entity",
       "elements": {
         "eventID": {
+          "@cds.autoincrement": true,
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.Integer"
         },
         "naam": {
           "type": "cds.String"
@@ -53,8 +54,9 @@
       "kind": "entity",
       "elements": {
         "sessieID": {
+          "@cds.autoincrement": true,
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.Integer"
         },
         "naam": {
           "type": "cds.String"
@@ -87,6 +89,59 @@
             {
               "ref": [
                 "eventID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "my.events.SessionParticipants": {
+      "kind": "entity",
+      "elements": {
+        "participantID": {
+          "@cds.autoincrement": true,
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "sessieID": {
+          "type": "cds.Integer"
+        },
+        "userEmail": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "sessies": {
+          "type": "cds.Association",
+          "target": "my.events.Sessions",
+          "on": [
+            {
+              "ref": [
+                "sessies",
+                "sessieID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "sessieID"
+              ]
+            }
+          ]
+        },
+        "deelnemers": {
+          "type": "cds.Association",
+          "target": "my.events.Users",
+          "on": [
+            {
+              "ref": [
+                "deelnemers",
+                "mail"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "userEmail"
               ]
             }
           ]
@@ -142,8 +197,9 @@
       },
       "elements": {
         "eventID": {
+          "@cds.autoincrement": true,
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.Integer"
         },
         "naam": {
           "type": "cds.String"
@@ -197,8 +253,9 @@
       },
       "elements": {
         "sessieID": {
+          "@cds.autoincrement": true,
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.Integer"
         },
         "naam": {
           "type": "cds.String"
@@ -280,7 +337,7 @@
     }
   },
   "meta": {
-    "creator": "CDS Compiler v4.7.6",
+    "creator": "CDS Compiler v4.8.0",
     "flavor": "inferred"
   },
   "$version": "2.0"

@@ -2,7 +2,8 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
-    "sap/ui/core/routing/History"
+    "sap/ui/core/routing/History",
+	"sap/ui/model/type/Date"
 ], function(Controller, JSONModel, MessageBox, History) {
     "use strict";
 
@@ -23,10 +24,14 @@ sap.ui.define([
             var oFormData = this.getView().getModel("eventForm").getData();
             oFormData.naam = new String(oFormData.naam);
             oFormData.beschrijving = new String(oFormData.beschrijving);
-            oFormData.datum = new Date(oFormData.datum).toDateString;
+            
+			var oDateType = new Date({ pattern: "yyyy-MM-dd" });
+            oFormData.datum = oDateType.setUTCDate(new Date(oFormData.datum), "string");
+
             oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
             oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;
-            oFormData.locatie = new String(oFormData.locatie);
+            
+			oFormData.locatie = new String(oFormData.locatie);
 
             var oDataModel = this.getView().getModel("v2model");
 

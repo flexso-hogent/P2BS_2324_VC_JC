@@ -2,8 +2,10 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
-    "sap/ui/core/routing/History"
-], function(Controller, JSONModel, MessageBox, History) {
+    "sap/ui/core/routing/History",
+    "sap/ui/model/type/Date",
+    "sap/ui/model/type/Time"
+], function(Controller, JSONModel, MessageBox, History, DateType, TimeType) {
     "use strict";
 
     return Controller.extend("flexso.controller.SessionManager", {
@@ -25,20 +27,20 @@ sap.ui.define([
             oRouter.getRoute("sessionManager").attachPatternMatched(this._onObjectMatched, this);
         },
 
-        _onObjectMatched: function(oEvent) {
-            var sSessionId = oEvent.getParameter("arguments").sessionId;
-            if (sSessionId) {
-                this._loadSessionData(sSessionId);
-            }
-        },
-
+		_onObjectMatched: function(oEvent) {
+			var sSessionId = oEvent.getParameter("arguments").sessionId;
+    if (sSessionId) {
+		MessageBox.show("Received sessionID: " + sSessionId);
+        this._loadSessionData(sSessionId);
+    }
+},
         _loadSessionData: function(sSessionId) {
             var oDataModel = this.getView().getModel("v2model");
             var sPath = "/Sessions('" + sSessionId + "')";
             oDataModel.read(sPath, {
                 success: function(oData) {
-                    var oModel = new JSONModel(oData);
-                    this.getView().setModel(oModel, "sessionForm");
+                    var oModel = this.getView().getModel("sessionForm");
+                    oModel.setData(oData);
                 }.bind(this),
                 error: function(oError) {
                     MessageBox.error("Error loading session data");
@@ -48,6 +50,14 @@ sap.ui.define([
 
         handleSessionSavePress: function() {
             var oFormData = this.getView().getModel("sessionForm").getData();
+
+            var oDateType = new DateType({ pattern: "yyyy-MM-dd" });
+            var oTimeType = new TimeType({ pattern: "HH:mm:ss" });
+
+            oFormData.datum = oDateType.formatValue(new Date(oFormData.datum), "string");
+            oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
+            oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;
+
             var oDataModel = this.getView().getModel("v2model");
 
             if (oFormData.id) {
@@ -86,7 +96,7 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("account", {}, true);
+                oRouter.navTo("eventManager", {}, true);
             }
         }
     });

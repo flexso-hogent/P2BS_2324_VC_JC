@@ -124,7 +124,7 @@
         },
         {
           "name": "RouteEvent",
-          "pattern": "Event/{eventID}",
+          "pattern": "Events({eventID})",
           "target": ["TargetEvent"]
         },
         {
@@ -194,8 +194,8 @@
         "TargetAccount": {
           "viewType": "XML",
           "viewPath": "flexso.view",
-          "viewName": "Account",
-          "viewId": "Account",
+          "viewName": "List",
+          "viewId": "List",
           "controlAggregation": "beginColumnPages"
         },
         "Login": {

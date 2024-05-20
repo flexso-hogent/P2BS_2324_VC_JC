@@ -40,7 +40,7 @@
 					<m:ToggleButton id="editEvent"
 						text="Edit event"
 						type="Emphasized"
-						press=".onEditSessionPress"/>
+						press="onEditSessionPress"/>
 					<m:Button id="deleteEvent"
 						text="Delete event"
 						type="Emphasized"

@@ -42,9 +42,9 @@
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
-        <ObjectPageSection id="_IDGenObjectPageSection1" title="Event Details">
+        <ObjectPageSection id="_IDGenObjectPageSection1" >
             <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
-                <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
+                <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout" title="Event Details">
                     <form:content>
                         <m:Label id="_IDGenLabel1" text="Name" />
                         <m:Input id="_IDGenInput1" value="{eventForm>/naam}" change="handleChange"/>
@@ -53,13 +53,13 @@
                         <m:Input id="_IDGenInput2" value="{eventForm>/beschrijving}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel3" text="Date" />
-                        <m:DatePicker id="_IDGenDatePicker1" value="{eventForm>/datum}" change="handleChange"/>
+                        <m:DatePicker id="_IDGenDatePicker1" value="{path: 'eventForm>/datum', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy-MM-dd'}}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel5" text="Start Time" />
-                        <m:TimePicker id="startTime" value="{eventForm>/beginTijd}" change="handleChange"/>
+                        <m:TimePicker id="startTime" value="{path: 'eventForm>/beginTijd', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel6" text="End Time" />
-                        <m:TimePicker id="endTime" value="{eventForm>/eindTijd}" change="handleChange"/>
+                        <m:TimePicker id="endTime" value="{path: 'eventForm>/eindTijd', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}" change="handleChange"/>
 
                         <m:Label id="_IDGenLabel4" text="Location" />
                         <m:Input id="_IDGenInput3" value="{eventForm>/locatie}" change="handleChange"/>

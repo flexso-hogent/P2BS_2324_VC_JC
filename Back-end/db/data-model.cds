@@ -23,9 +23,16 @@ entity Sessions {
       eindTijd     : Time;
       lokaalnummer : String;
       event        : Association to Events;
-      deelnemers   : Association to many Users //on deelnemers.sessie = $self;
+      //deelnemers   : Association to many Users on deelnemers.sessies = $self;
 }
 
+entity SessionParticipants {
+  key participantID : Integer @cds.autoincrement;
+      sessieID     : Integer;
+      userEmail    : String(100);
+      sessies      : Association to Sessions on sessies.sessieID = sessieID;
+      deelnemers  : Association to Users on deelnemers.mail = userEmail;
+}
 entity Users {
   key mail       : String(100) not null; // Mail als primaire sleutel
       voornaam   : String(50);
@@ -34,4 +41,5 @@ entity Users {
       titel      : String(50);
       stad       : String(50);
       rol        : String;
+      //sessies    : Association to many Sessions on sessies.deelnemers = $self;
 }
