@@ -9,13 +9,14 @@ sap.ui.define([
 			this.oOwnerComponent = this.getOwnerComponent();
 			this.oRouter = this.oOwnerComponent.getRouter();
 			if(!sessionStorage.getItem("status")){
+				console.log("navig")
 				this.oRouter.navTo("login")
 			};
 			this.oRouter.attachRouteMatched(this.onRouteMatched, this);
 			
 		},
 
-		onRouteMatched: function (oEvent) {//TODO: aanpassen aan ons model
+		onRouteMatched: function (oEvent) {
 			var sRouteName = oEvent.getParameter("name"),
 				oArguments = oEvent.getParameter("arguments");
 		

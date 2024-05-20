@@ -113,6 +113,11 @@
       "routes": [
        
         {
+          "name": "login",
+          "pattern": "login",
+          "target": ["Login"]
+        },
+        {
           "name": "app",
           "pattern": "app",
           "target": ["TargetApp"]
@@ -195,6 +200,7 @@
         },
         "Login": {
           "name": "Login",
+          "id": "Login",
           "controlAggregation": "beginColumnPages"
         },
 
