@@ -41,12 +41,12 @@ sap.ui.define([
                             oRouter.navTo("account")//TODO: needs to navigate to the root view somehow?
                         }else{
                             //TODO: show error wrong login information, messagetoast?
-                            sap.m.MessageToast.show("Try again");;
+                            sap.m.MessageToast.show("Incorrect password");;
                         }
                     },
                     error: function(oError){
                         //TODO: show error wrong login information, messagetoast?
-                        MessageBox.error("Error");
+                        MessageBox.error("Incorrect username");
                     }
                  })
               

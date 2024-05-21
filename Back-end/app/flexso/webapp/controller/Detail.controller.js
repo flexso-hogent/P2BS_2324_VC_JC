@@ -17,7 +17,7 @@ sap.ui.define([
 
             var oView = this.getView();
 
-            if (sessionStorage.getItem('status') !== 'Organisator') {
+            if (sessionStorage.getItem('status') != 'Organisator') {
                 oView.byId("addSession").setVisible(false);
                 oView.byId("editEvent").setVisible(false);
                 oView.byId("deleteEvent").setVisible(false);
@@ -57,7 +57,7 @@ sap.ui.define([
 
             if (oSelectedSession) {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("sessionManager", {
+                oRouter.navTo("sessionManagerEditor", {
                     sessionID: oSelectedSession.sessieID,
                     editMode: true
                 });
@@ -95,7 +95,23 @@ sap.ui.define([
 
             if (oContext) {
                 var oSelectedSession = oContext.getObject();
-                var sUserId = sap.ushell.Container.getService("UserInfo").getId();
+
+                var sSessionID = oSelectedSession.sessieID;
+                var sSessionName = oSelectedSession.naam;
+
+                if (sSessionID && sSessionName) {
+                    var sSubject = "Register for Session ID: " + sSessionID + " - " + sSessionName;
+                    var sBody = "I would like to register for the session with ID: " + sSessionID + " and Name: " + sSessionName;
+                    var sMailtoLink = "mailto:register@example.com?subject=" + encodeURIComponent(sSubject) + "&body=" + encodeURIComponent(sBody);
+                    window.location.href = sMailtoLink;
+                } else {
+                    MessageToast.show("Session ID or Name is missing. Cannot send email.");
+                }
+            } else {
+                MessageToast.show("No session selected. Please select a session first.");
+            } /*
+
+               /* var sUserId = sap.ushell.Container.getService("UserInfo").getId();
                 var oDataModel = this.getView().getModel("v2model");
 
                 oDataModel.create("/SessionParticipants", {
@@ -108,8 +124,7 @@ sap.ui.define([
                     error: function () {
                         MessageToast.show("Failed to register for this session. Please try again later.");
                     }
-                });
-            }
+                }); */
         },
 
         onShowParticipantsList: function () {

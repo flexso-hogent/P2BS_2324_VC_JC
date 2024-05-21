@@ -106,7 +106,7 @@
 											title="{path: 'naam', model: 'eventModel' }"
 											text="{eventModel>lokaalnummer}"/>
 										<m:HBox id="_IDGenHBox1" justifyContent="End">
-                                			<m:Button id="registerButton" text="Register" press=".onRegisterPress" />
+                                			<m:Button id="registerButton" text="Register" press=".onRegisterParticipant" />
                             			</m:HBox>
 									</m:cells>
 								</m:ColumnListItem>

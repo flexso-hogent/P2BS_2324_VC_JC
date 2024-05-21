@@ -145,6 +145,11 @@
           "target": ["TargetSessionManager"]
         },
         {
+          "name": "sessionManagerEditor",
+          "pattern": "sessionManager/{sessieID}",
+          "target": ["TargetSessionManagerEditor"]
+        },
+        {
           "pattern": ":layout:",
           "name": "list",
           "target": ["list", "detail"]
@@ -185,6 +190,14 @@
           "viewLevel": 2
         },
         "TargetSessionManager": {
+          "viewType": "XML",
+          "viewPath": "flexso.view",
+          "viewName": "SessionManager",
+          "viewId": "SessionManager",
+          "controlAggregation": "beginColumnPages",
+          "viewLevel": 2
+        },
+        "TargetSessionManagerEditor": {
           "viewType": "XML",
           "viewPath": "flexso.view",
           "viewName": "SessionManager",
