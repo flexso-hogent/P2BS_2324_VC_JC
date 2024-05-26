@@ -25,8 +25,10 @@ sap.ui.define([
             oFormData.naam = new String(oFormData.naam);
             oFormData.beschrijving = new String(oFormData.beschrijving);
             
-			var oDateType = new Date({ pattern: "yyyy-MM-dd" });
-            oFormData.datum = oDateType.setUTCDate(new Date(oFormData.datum), "string");
+			var oDateType = new sap.ui.model.type.Date({pattern: "yyyy-MM-dd"});
+
+            oFormData.datum = oDateType.formatValue(oFormData.datum, "string");
+
 
             oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
             oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;

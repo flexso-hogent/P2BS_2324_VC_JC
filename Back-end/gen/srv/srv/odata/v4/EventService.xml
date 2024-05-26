@@ -16,6 +16,10 @@
           <NavigationPropertyBinding Path="event" Target="Events"/>
         </EntitySet>
         <EntitySet Name="Users" EntityType="EventService.Users"/>
+        <EntitySet Name="SessionParticipants" EntityType="EventService.SessionParticipants">
+          <NavigationPropertyBinding Path="sessies" Target="Sessions"/>
+          <NavigationPropertyBinding Path="deelnemers" Target="Users"/>
+        </EntitySet>
       </EntityContainer>
       <EntityType Name="Events">
         <Key>
@@ -59,6 +63,20 @@
         <Property Name="titel" Type="Edm.String" MaxLength="50"/>
         <Property Name="stad" Type="Edm.String" MaxLength="50"/>
         <Property Name="rol" Type="Edm.String"/>
+      </EntityType>
+      <EntityType Name="SessionParticipants">
+        <Key>
+          <PropertyRef Name="participantID"/>
+        </Key>
+        <Property Name="participantID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="sessieID" Type="Edm.Int32"/>
+        <Property Name="userEmail" Type="Edm.String" MaxLength="100"/>
+        <NavigationProperty Name="sessies" Type="EventService.Sessions">
+          <ReferentialConstraint Property="sessieID" ReferencedProperty="sessieID"/>
+        </NavigationProperty>
+        <NavigationProperty Name="deelnemers" Type="EventService.Users">
+          <ReferentialConstraint Property="userEmail" ReferencedProperty="mail"/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
   </edmx:DataServices>

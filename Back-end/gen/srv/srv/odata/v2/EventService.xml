@@ -12,9 +12,18 @@
         <EntitySet Name="Events" EntityType="EventService.Events"/>
         <EntitySet Name="Sessions" EntityType="EventService.Sessions"/>
         <EntitySet Name="Users" EntityType="EventService.Users"/>
+        <EntitySet Name="SessionParticipants" EntityType="EventService.SessionParticipants"/>
         <AssociationSet Name="Sessions_event" Association="EventService.Sessions_event">
           <End Role="Sessions" EntitySet="Sessions"/>
           <End Role="Events" EntitySet="Events"/>
+        </AssociationSet>
+        <AssociationSet Name="SessionParticipants_sessies" Association="EventService.SessionParticipants_sessies">
+          <End Role="SessionParticipants" EntitySet="SessionParticipants"/>
+          <End Role="Sessions" EntitySet="Sessions"/>
+        </AssociationSet>
+        <AssociationSet Name="SessionParticipants_deelnemers" Association="EventService.SessionParticipants_deelnemers">
+          <End Role="SessionParticipants" EntitySet="SessionParticipants"/>
+          <End Role="Users" EntitySet="Users"/>
         </AssociationSet>
       </EntityContainer>
       <EntityType Name="Events">
@@ -58,6 +67,16 @@
         <Property Name="stad" Type="Edm.String" MaxLength="50"/>
         <Property Name="rol" Type="Edm.String"/>
       </EntityType>
+      <EntityType Name="SessionParticipants">
+        <Key>
+          <PropertyRef Name="participantID"/>
+        </Key>
+        <Property Name="participantID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="sessieID" Type="Edm.Int32"/>
+        <Property Name="userEmail" Type="Edm.String" MaxLength="100"/>
+        <NavigationProperty Name="sessies" Relationship="EventService.SessionParticipants_sessies" FromRole="SessionParticipants" ToRole="Sessions"/>
+        <NavigationProperty Name="deelnemers" Relationship="EventService.SessionParticipants_deelnemers" FromRole="SessionParticipants" ToRole="Users"/>
+      </EntityType>
       <Association Name="Sessions_event">
         <End Role="Sessions" Type="EventService.Sessions" Multiplicity="*"/>
         <End Role="Events" Type="EventService.Events" Multiplicity="0..1"/>
@@ -67,6 +86,30 @@
           </Principal>
           <Dependent Role="Sessions">
             <PropertyRef Name="event_eventID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SessionParticipants_sessies">
+        <End Role="SessionParticipants" Type="EventService.SessionParticipants" Multiplicity="*"/>
+        <End Role="Sessions" Type="EventService.Sessions" Multiplicity="0..1"/>
+        <ReferentialConstraint>
+          <Principal Role="Sessions">
+            <PropertyRef Name="sessieID"/>
+          </Principal>
+          <Dependent Role="SessionParticipants">
+            <PropertyRef Name="sessieID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SessionParticipants_deelnemers">
+        <End Role="SessionParticipants" Type="EventService.SessionParticipants" Multiplicity="*"/>
+        <End Role="Users" Type="EventService.Users" Multiplicity="0..1"/>
+        <ReferentialConstraint>
+          <Principal Role="Users">
+            <PropertyRef Name="mail"/>
+          </Principal>
+          <Dependent Role="SessionParticipants">
+            <PropertyRef Name="userEmail"/>
           </Dependent>
         </ReferentialConstraint>
       </Association>

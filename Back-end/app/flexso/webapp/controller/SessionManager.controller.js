@@ -51,10 +51,12 @@ sap.ui.define([
         handleSessionSavePress: function() {
             var oFormData = this.getView().getModel("sessionForm").getData();
 
-            var oDateType = new DateType({ pattern: "yyyy-MM-dd" });
             var oTimeType = new TimeType({ pattern: "HH:mm:ss" });
 
-            oFormData.datum = oDateType.formatValue(new Date(oFormData.datum), "string");
+            var oDateType = new sap.ui.model.type.Date({pattern: "yyyy-MM-dd"});
+
+            oFormData.datum = oDateType.formatValue(oFormData.datum, "string");
+            
             oFormData.beginTijd = new Date(oFormData.beginTijd).toTimeString;
             oFormData.eindTijd = new Date(oFormData.eindTijd).toTimeString;
 

@@ -34,7 +34,7 @@ Content-Type: application/json
     "locatie": "undefined"
 }
 
-### Create Event
+### Create Session
 POST http://localhost:4004/odata/v2/event/Sessions
 Content-Type: application/json
  
@@ -49,4 +49,16 @@ Content-Type: application/json
     "lokaalnummer": "A2"
     
 }
+
+### Create Participant
+POST http://localhost:4004/odata/v2/event/SessionParticipants
+Content-Type: application/json
+
+{
+    
+    "sessieID": 1,
+    "userEmail": "john.doe@example.com"
+}
+
+
 

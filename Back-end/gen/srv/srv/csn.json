@@ -334,6 +334,66 @@
           "type": "cds.String"
         }
       }
+    },
+    "EventService.SessionParticipants": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "my.events.SessionParticipants"
+          ]
+        }
+      },
+      "elements": {
+        "participantID": {
+          "@cds.autoincrement": true,
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "sessieID": {
+          "type": "cds.Integer"
+        },
+        "userEmail": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "sessies": {
+          "type": "cds.Association",
+          "target": "EventService.Sessions",
+          "on": [
+            {
+              "ref": [
+                "sessies",
+                "sessieID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "sessieID"
+              ]
+            }
+          ]
+        },
+        "deelnemers": {
+          "type": "cds.Association",
+          "target": "EventService.Users",
+          "on": [
+            {
+              "ref": [
+                "deelnemers",
+                "mail"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "userEmail"
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "meta": {

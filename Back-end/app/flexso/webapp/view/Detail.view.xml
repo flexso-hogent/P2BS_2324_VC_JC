@@ -121,7 +121,7 @@
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection2">
 						<blocks>
-							<m:List id="participantsList" items="{path: 'eventModel>/SelectedSession/participants'}">
+							<m:List id="participantsList" items="{path: 'eventModel>/SessionParticipants'}">
 								<m:StandardListItem id="_IDGenStandardListItem1" title="{eventModel>}" />
 							</m:List>
 						</blocks>
