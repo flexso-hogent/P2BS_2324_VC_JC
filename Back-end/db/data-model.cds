@@ -23,15 +23,16 @@ entity Sessions {
       eindTijd     : Time;
       lokaalnummer : String;
       event        : Association to Events;
-      //deelnemers   : Association to many Users on deelnemers.sessies = $self;
+      deelnemers   : Association to SessionParticipants on deelnemers.sessieID = $self.sessieID;
+      feedback     : Association to Feedback on feedback.sessieID = $self.sessieID;
 }
 
 entity SessionParticipants {
   key participantID : Integer @cds.autoincrement;
       sessieID     : Integer;
       userEmail    : String(100);
-      sessies      : Association to Sessions on sessies.sessieID = sessieID;
-      deelnemers  : Association to Users on deelnemers.mail = userEmail;
+      sessies      : Association to Sessions on sessies.sessieID = $self.sessieID;
+      user  : Association to Users on user.mail = $self.userEmail;
 }
 entity Users {
   key mail       : String(100) not null; // Mail als primaire sleutel
@@ -40,6 +41,17 @@ entity Users {
       bedrijf    : String(100);
       titel      : String(50);
       stad       : String(50);
+      wachtwoord : String(50);
       rol        : String;
-      //sessies    : Association to many Sessions on sessies.deelnemers = $self;
+      sessies    : Association to SessionParticipants on sessies.userEmail = $self.mail;
+      feedback   : Association to Feedback on feedback.userEmail = $self.mail ;
+}
+entity Feedback {
+  key feedbackID : Integer @cds.autoincrement;
+      sessieID    : Integer;
+      userEmail   : String(100);
+      aantalSterren : Decimal(5);
+      inhoud      : String;
+      sessie      : Association to Sessions on sessie.sessieID = $self.sessieID;
+      user        : Association to Users on user.mail = $self.userEmail;
 }

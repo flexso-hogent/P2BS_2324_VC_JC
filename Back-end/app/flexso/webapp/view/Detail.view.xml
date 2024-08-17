@@ -23,7 +23,7 @@
 				<snappedHeading>
 					<m:FlexBox id="_IDGenFlexBox2" wrap="Wrap" fitContainer="true" alignItems="Center">
 						<m:FlexBox id="_IDGenFlexBox3" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
-							<f:Avatar id="_IDGenAvatar2"
+							<m:Avatar id="_IDGenAvatar2"
 								src="" 
 								displaySize="S"
 								displayShape="Square"
@@ -34,15 +34,15 @@
 				</snappedHeading>
 				<actions>
           			<m:ToggleButton id="addSession"
-						text="Add session"
+						text="{i18n>sessieToevoegen}"
 						type="Emphasized"
 						press=".onAddSessionPress"/>
 					<m:ToggleButton id="editEvent"
-						text="Edit event"
+						text="{i18n>sessieEditeren}"
 						type="Emphasized"
 						press="onEditSessionPress"/>
 					<m:Button id="deleteEvent"
-						text="Delete event"
+						text="{i18n>sessieDeleten}"
 						type="Emphasized"
 						press=".onDeleteSessionPress"/>
 				</actions>
@@ -50,11 +50,11 @@
 		</headerTitle>
         <headerContent>
 			<m:FlexBox id="_IDGenFlexBox1" wrap="Wrap" fitContainer="true" alignItems="Stretch">
-				<f:Avatar id="_IDGenAvatar1"
+				<m:Avatar id="_IDGenAvatar1"
 					displaySize="L"
 					displayShape="Square"
 					class="sapUiTinyMarginEnd">
-				</f:Avatar>
+				</m:Avatar>
 				<m:VBox id="_IDGenVBox1" justifyContent="Center" class="sapUiSmallMarginEnd">
 					<m:Label id="_IDGenLabel1" text="Description"/>
 					<m:Text id="_IDGenText1" text="{eventModel>beschrijving}"/>

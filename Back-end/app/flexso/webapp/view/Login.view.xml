@@ -3,9 +3,18 @@
         <pages>
             <Page title="Login" id="loginPage">
                 <content>
-                    <Input id="usernameInput" placeholder="Username"/>
-                    <Input id="passwordInput" placeholder="Password" type="Password"/>
-                    <Button id="loginButton" text="Login" press="onLoginPress"/>
+                    <FlexBox id="_IDGenFlexBox1" justifyContent="Center" alignItems="Center" height="100%" width="100%">
+                        <Panel id="_IDGenPanel1" width="40vw" backgroundDesign="Translucent">
+                            <Label id="_usernameLabel1" text="{i18n>gebruikersnaam}" labelFor="username" class="input" required="true"/>
+                            <Input id="usernameInput" placeholder="{i18n>gebruikersnaam}"/>
+                            <Label id="_passwordLabel2" text="{i18n>wachtwoord}" class="input" labelFor="wachtwoord" required="true" />
+                            <Input id="passwordInput" placeholder="{i18n>wachtwoord}" type="Password"/>
+                            <HBox id="_IDGenHBox1" >
+                                <Link id="_IDGenLink1" text="{i18n>registreerAccount}" press=".onRegister" />
+                            </HBox>
+                            <Button id="loginButton" text="Login" press="onLoginPress"/>
+                        </Panel>
+                    </FlexBox>    
                 </content>
             </Page>     
         </pages>

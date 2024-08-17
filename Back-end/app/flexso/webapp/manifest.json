@@ -119,6 +119,11 @@
           "target": ["Login"]
         },
         {
+          "name": "register",
+          "pattern": "register",
+          "target": ["Register"]
+        },
+        {
           "name": "app",
           "pattern": "app",
           "target": ["TargetApp"]
@@ -163,6 +168,11 @@
           "name": "account",
           "pattern": "",
           "target": ["TargetAccount"]
+        },
+        {
+          "pattern": "session/{sessieID}",
+          "name": "sessionDetail",
+          "target": "sessionDetail"
         }
       ],
       "targets": {
@@ -217,6 +227,14 @@
           "id": "Login",
           "controlAggregation": "beginColumnPages"
         },
+        "Register": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "clearControlAggregation": false,
+          "viewId": "Register",
+          "viewName": "Register"
+        },
 
         "list": {
           "name": "List",
@@ -227,6 +245,10 @@
           "name": "Detail",
           "id":"Detail",
           "controlAggregation": "midColumnPages"
+        },
+        "sessionDetail": {
+          "viewName": "SessionDetail",
+          "viewLevel": 2
         }
       }
     },

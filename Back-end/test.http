@@ -60,5 +60,18 @@ Content-Type: application/json
     "userEmail": "john.doe@example.com"
 }
 
-
+### Register User
+POST http://localhost:4004/odata/v2/event/Users
+Content-Type: application/json
+ 
+{
+    "mail": "test@example.com",
+    "voornaam": "Jeremy",
+    "achternaam": "Crossan",
+    "bedrijf": "HoGent",
+    "titel": "Student",
+    "stad": "Monda",
+    "wachtwoord": "test123",
+    "rol": "Deelnemer"
+}
 

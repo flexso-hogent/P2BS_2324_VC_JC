@@ -1,0 +1,71 @@
+<mvc:View
+    controllerName="flexso.controller.Register"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <App id="register">
+        <Page id="_IDGenPage1" title="Register">
+            <content>
+                <VBox id="_IDGenVBox1"
+                    class="sapUiSmallMargin"
+                    justifyContent="Center"
+                    alignItems="Center">
+
+                    <Label id="_IDGenLabel3" text="{i18n>mail}" />
+                    <Input
+                        id="mail"
+                        value="{form>/mail}" placeholder="{i18n>emailPlaceholder}"/>
+
+                    <Label id="_IDGenLabel2" text="{i18n>voornaam}" />
+                    <Input
+                        id="voornaam"
+                        value="{form>/voornaam}" placeholder="{i18n>voornaamPlaceholder}"/>
+
+                    <Label id="_IDGenLabel1" text="{i18n>achternaam}" />
+                    <Input
+                        id="achternaam"
+                        value="{form>/achternaam}" placeholder="{i18n>achternaamPlaceholder}"/>
+
+                    <Label id="_IDGenLabel8" text="{i18n>bedrijf}" />
+                    <Input
+                        id="bedrijf"
+                        value="{form>/bedrijf}" />
+
+                    <Label id="_IDGenLabel4" text="{i18n>titel}" />
+                    <Input
+                        id="titel"
+                        value="{form>/titel}" />
+
+                    <Label id="_IDGenLabel7" text="{i18n>stad}" />
+                    <Input
+                        id="stad"
+                        value="{form>/stad}" />
+
+                    <Label id="_IDGenLabel5" text="{i18n>wachtwoord}" />
+                    <Input
+                        id="wachtwoord"
+                        type="Password"
+                        value="{form>/wachtwoord}"
+                        showSuggestion="false"
+                        showValueHelp="false" />
+
+                    <Label id="_IDGenLabel6" text="{i18n>herhaalWachtwoord}" />
+                    <Input
+                        id="herhaalWachtwoord"
+                        type="Password"
+                        value="{form>/herhaalWachtwoord}"
+                        showSuggestion="false"
+                        showValueHelp="false" />
+
+                    <Button id="_IDGenButton1"
+                        text="{i18n>registreer}"
+                        type="Emphasized"
+                        press="onRegister" />
+                    <Button id="_IDGenButton2"
+                        text="{i18n>terug}"
+                        press="onBack" />
+                </VBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

@@ -17,9 +17,7 @@ sap.ui.define([
             onLoginPress: function() {
                 var username = this.getView().byId("usernameInput").getValue();
                 var password = this.getView().byId("passwordInput").getValue();
-                this.checkMail(username,password);
-                console.log(sessionStorage.getItem('user'),sessionStorage.getItem('status'))
-                
+                this.checkMail(username,password);                
             },
 
             checkMail: function(mail,password) {
@@ -47,11 +45,12 @@ sap.ui.define([
                     error: function(oError){
                         //TODO: show error wrong login information, messagetoast?
                         MessageBox.error("Incorrect username");
-                    }
+                    },
                  })
-              
-              
-            }
-
+            },
+            onRegister: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("register");
+              }
         });
     });

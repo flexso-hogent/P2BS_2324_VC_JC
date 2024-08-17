@@ -1,6 +1,6 @@
-mail,voornaam,achternaam,bedrijf,titel,stad,rol
-john.doe@example.com,John,Doe,XYZ Corp,Data Scientist,Antwerpen,Deelnemer
-jane.smith@example.com,Jane,Smith,ABC Inc,Machine Learning Engineer,Gent,Organisator
-emily.johnson@example.com,Emily,Johnson,Data Insights Ltd,Data Analyst,Hasselt,Deelnemer
-michael.brown@example.com,Michael,Brown,BlockTech Solutions,Blockchain Developer,Brugge,Deelnemer
-david.lee@example.com,David,Lee,Cloud Innovations,Cloud Architect,Aalst,Organisator
+mail,voornaam,achternaam,bedrijf,titel,stad,wachtwoord,rol
+john.doe@example.com,John,Doe,XYZ Corp,Data Scientist,Antwerpen,John,Deelnemer
+jane.smith@example.com,Jane,Smith,ABC Inc,Machine Learning Engineer,Gent,Jane,Organisator
+emily.johnson@example.com,Emily,Johnson,Data Insights Ltd,Data Analyst,Hasselt,Emily,Deelnemer
+michael.brown@example.com,Michael,Brown,BlockTech Solutions,Blockchain Developer,Brugge,Michael,Deelnemer
+david.lee@example.com,David,Lee,Cloud Innovations,Cloud Architect,Aalst,David,Organisator

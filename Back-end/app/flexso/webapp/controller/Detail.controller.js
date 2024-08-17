@@ -31,7 +31,27 @@ sap.ui.define([
                 model: "eventModel"
             });
         },
-        onSessionSelect: function (oEvent) {
+        onSessionSelect: function(oEvent) {
+            var oSelectedItem = oEvent.getSource();
+            var oBindingContext = oSelectedItem.getBindingContext();
+            
+            if (oBindingContext) {
+              var oSelectedSession = oBindingContext.getObject();
+              var sPath = oBindingContext.getPath();
+              var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      
+              // Retrieve sessieID from the selected item
+              var sSessieID = oSelectedSession.sessieID;
+              
+              // Navigate to the session detail page
+              oRouter.navTo("sessionDetail", {
+                sessieID: sSessieID
+              });
+            } else {
+              console.warn("No binding context found for the selected item.");
+            }
+          },
+        /* onSessionSelect: function (oEvent) {
             var oSelectedItem = oEvent.getSource();
             var oContext = oSelectedItem.getBindingContext("eventModel");
 
@@ -42,7 +62,7 @@ sap.ui.define([
             } else {
                 console.error("No context found for selected session");
             }
-        },
+        }, */
         onAddSessionPress: function () {
             var sEventID = this._event;
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
