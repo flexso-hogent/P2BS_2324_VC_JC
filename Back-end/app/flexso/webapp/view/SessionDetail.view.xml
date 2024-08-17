@@ -1,19 +1,101 @@
 <mvc:View
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  controllerName="flexso.controller.SessionDetail">
-  <Page id="_IDGenPage1"
-    title="Sessiedetails">
-    <content>
-      <VBox id="_IDGenVBox1">
-        <Text id="_IDGenText1" text="{sessieID}" />
-        <Text id="_IDGenText2" text="{naam}" />
-        <Text id="_IDGenText3" text="{beschrijving}" />
-        <Text id="_IDGenText4" text="{datum}" />
-        <Text id="_IDGenText5" text="{beginTijd}" />
-        <Text id="_IDGenText6" text="{eindTijd}" />
-        <Text id="_IDGenText7" text="{lokaalnummer}" />
-      </VBox>
-    </content>
-  </Page>
+    controllerName="flexso.controller.SessionDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    height="100%">
+    <ObjectPageLayout id="ObjectPageLayout" isChildPage="true" upperCaseAnchorBar="false">
+
+        <headerTitle>
+            <ObjectPageHeader 
+                id="header" 
+                
+            />
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox id="_IDGenFlexBox1" wrap="Wrap" fitContainer="true" class="horizontalLayout">
+                <m:items>
+                    <layout:VerticalLayout id="_IDGenVerticalLayout1">
+                        <layout:HorizontalLayout id="_IDGenHorizontalLayout1">
+                            <core:Icon id="_IDGenIcon1" src="sap-icon://employee" class="size2">
+                                <core:layoutData>
+                                    <m:FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
+                                </core:layoutData>
+                            </core:Icon>
+                            <m:Text id="_IDGenText1" text="{eventModel>/spreker}" />
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout id="_IDGenHorizontalLayout2">
+                            <core:Icon id="_IDGenIcon2" src="sap-icon://calendar" class="size2">
+                                <core:layoutData>
+                                    <m:FlexItemData id="_IDGenFlexItemData2" growFactor="1" />
+                                </core:layoutData>
+                            </core:Icon>
+                            <m:Text id="_IDGenText2" text="{ path: 'eventModel>/datum', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long', source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }} }"/>
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout id="_IDGenHorizontalLayout3">
+                            <core:Icon id="_IDGenIcon3" src="sap-icon://away" class="size2">
+                                <core:layoutData>
+                                    <m:FlexItemData id="_IDGenFlexItemData3" growFactor="1" />
+                                </core:layoutData>
+                            </core:Icon>
+                            <m:Text id="_IDGenText3" text="{
+                                parts: [
+                                    {path: 'eventModel>/beginTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }},
+                                    {path: 'eventModel>/eindTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }}
+                                ],
+                                formatter: '.myFormatDateFunction'
+                            }" />
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout id="rating2" visible="{= ${eventModel>/feedback} ? true : false }">
+                            <core:Icon id="_IDGenIcon5" src="sap-icon://feedback" class="size2">
+                                <core:layoutData>
+                                    <m:FlexItemData id="_IDGenFlexItemData5" growFactor="1" />
+                                </core:layoutData>
+                            </core:Icon>
+                            <m:RatingIndicator 
+                                value="{eventModel>/aantalSterren}" 
+                                iconSize="18px" 
+                                id="rating" 
+                                editable="false" 
+                                visible="true" 
+                                tooltip="{eventModel>/ratingTooltip}" />
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout id="geenRecensies" visible="{= !${eventModel>/feedback} ? true : false }">
+                            <core:Icon id="_IDGenIcon6" src="sap-icon://feedback" class="size2">
+                                <core:layoutData>
+                                    <m:FlexItemData id="_IDGenFlexItemData6" growFactor="1" />
+                                </core:layoutData>
+                            </core:Icon>
+                            <m:Text id="_IDGenText4" text="{i18n>nogGeenRecensies}"/>
+                        </layout:HorizontalLayout>
+                    </layout:VerticalLayout>
+                </m:items>
+
+                <layout:VerticalLayout id="_IDGenVerticalLayout2" class="sapUiSmallMarginBeginEnd buttonWidth">
+                    <m:Button id="_IDGenButton1" text="{i18n>terug}" type="Default" press=".onTerug"/>
+                    <m:Button text="{i18n>pasSessieAanButton}" type="Attention" press=".editSessie" visible="{= ${userCanEdit} ? true : false }" id="av3"/>
+                    <m:Button text="{i18n>verwijderSessieButton}" type="Reject" press=".deleteSessie" visible="{= ${userCanDelete} ? true : false }" id="av4" />
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection titleUppercase="false" id="personal" title="{i18n>sessieSectionTitle}">
+                <subSections>
+                    <ObjectPageSubSection id="personalSS1" title="{i18n>meerInfo}" titleUppercase="false">
+                        <blocks>
+                            <m:Text id="_IDGenText5" text="{/beschrijving}" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
 </mvc:View>

@@ -56,8 +56,8 @@ Content-Type: application/json
 
 {
     
-    "sessieID": 1,
-    "userEmail": "john.doe@example.com"
+    "sessieID": 5,
+    "userEmail": "david.lee@example.com"
 }
 
 ### Register User

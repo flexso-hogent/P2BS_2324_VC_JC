@@ -45,7 +45,54 @@ sap.ui.define(
       onAddEventPress: function(oEvent) {
 			    var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			    oRouter.navTo("eventManager")
-		  }
+		  },
+      onHandleLanguage: function () {
+        var oResoureceModel = this.getView().getModel("i18n");
+        if (oResoureceModel.sLocale == "nl") {
+          this.onLanguageSwitchToEnglish();
+        } else {
+          this.onLanguageSwitchToDutch();
+        }
+      },
+      onLanguageSwitchToEnglish: function () {
+        var oResoureceModel = this.getView().getModel("i18n");
+        oResoureceModel.sLocale = "en";
+        sap.ui.getCore().getConfiguration().setLanguage("en");
+        localStorage.setItem("language", "en");
+        this.getView().getModel("i18n").refresh();
+        window.onload = function () {
+          window.location.reload();
+        };
+      },
+      onLanguageSwitchToDutch: function () {
+        var oResoureceModel = this.getView().getModel("i18n");
+        oResoureceModel.sLocale = "nl";
+        sap.ui.getCore().getConfiguration().setLanguage("nl");
+        localStorage.setItem("language", "nl");
+        this.getView().getModel("i18n").refresh();
+      },
+      onMenuAction: function (oEvent) {
+        var oItem = oEvent.getParameter("item"),
+          sItemPath = "";
+
+        while (oItem instanceof MenuItem) {
+          sItemPath = oItem.getText();
+          oItem = oItem.getParent();
+        }
+
+        switch (sItemPath) {
+          case "English":
+            this.onLanguageSwitchToEnglish();
+            window.location.reload();
+
+            break;
+          case "Dutch":
+            this.onLanguageSwitchToDutch();
+            window.location.reload();
+
+            break;
+        }
+      },
     });
   }
 );

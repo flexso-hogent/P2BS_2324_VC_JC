@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Menu id="_IDGenMenu1" itemSelected="onMenuAction" class="menu">
+		<MenuItem id="_IDGenMenuItem1" text="English"/>
+		<MenuItem id="_IDGenMenuItem2" text="Dutch"/>
+	</Menu>
+</core:FragmentDefinition>

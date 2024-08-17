@@ -6,6 +6,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	controllerName="flexso.controller.Detail"
 	id="Detail">
+	
 	<ObjectPageLayout
 		id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
@@ -49,6 +50,7 @@
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
         <headerContent>
+
 			<m:FlexBox id="_IDGenFlexBox1" wrap="Wrap" fitContainer="true" alignItems="Stretch">
 				<m:Avatar id="_IDGenAvatar1"
 					displaySize="L"
@@ -91,7 +93,7 @@
 							class="sapFDynamicPageAlignContent"
 							width="auto"
 							delete=".onDeleteSessionPress"
-							itemPress=".onSessionSelect">
+							>
 							<m:columns>
 								<m:Column id="_IDGenColumn1"
 									width="12em">
@@ -116,13 +118,28 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
+
+<!-- 			<ObjectPageSection id="participantsSection" title="Participants" visible="{= ${rol} === 'beheerder' ? true : false }">
+				<subSections>
+					<ObjectPageSubSection id="participantsSubSection" title="Participants List" titleUppercase="false">
+						<blocks>
+							<m:List id="participantsList" items="{eventModel>/sessions/{sessieID}/SessionParticipants}">
+								<m:StandardListItem id="_IDGenStandardListItem1" title="{userEmail}" />
+							</m:List>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection> -->
 			
-			<ObjectPageSection id="_IDGenObjectPageSection2" title="Participants">
+			 <ObjectPageSection id="_IDGenObjectPageSection2" title="Participants" visible="{= ${eventModel>/rol} === 'beheerder' }">
+
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection2">
 						<blocks>
 							<m:List id="participantsList" items="{path: 'eventModel>/SessionParticipants'}">
-								<m:StandardListItem id="_IDGenStandardListItem1" title="{eventModel>}" />
+								<m:StandardListItem id="_IDGenStandardListItem1" title="{path: 'eventModel>userEmail', targetType: 'any'}" />
+								<m:StandardListItem id="_IDGenStandardListItem2" title="{eventModel>userEmail}" description="{i18n>sessieID}: {eventModel>sessieID}" />
+
 							</m:List>
 						</blocks>
 					</ObjectPageSubSection>

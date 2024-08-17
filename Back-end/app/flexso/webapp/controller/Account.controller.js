@@ -27,6 +27,8 @@ sap.ui.define([
 	
 		},
 
+
+
 		onStateChanged: function (oEvent) {
 			var bIsNavigationArrow = oEvent.getParameter("isNavigationArrow"),
 				sLayout = oEvent.getParameter("layout");

@@ -31,7 +31,8 @@ sap.ui.define([
                 model: "eventModel"
             });
         },
-        onSessionSelect: function(oEvent) {
+        /* onSessionSelect: function(oEvent) {
+            console.log("onSessionSelect called", new Date());
             var oSelectedItem = oEvent.getSource();
             var oBindingContext = oSelectedItem.getBindingContext();
             
@@ -51,7 +52,8 @@ sap.ui.define([
               console.warn("No binding context found for the selected item.");
             }
           },
-        /* onSessionSelect: function (oEvent) {
+        */ 
+       onSessionSelect: function (oEvent) {
             var oSelectedItem = oEvent.getSource();
             var oContext = oSelectedItem.getBindingContext("eventModel");
 
@@ -59,10 +61,17 @@ sap.ui.define([
                 this._selectedSession = oContext.getObject();
                 console.log("Selected session:", this._selectedSession);
                 console.log("Selected session ID:", this._selectedSession.sessieID);
+
+                // Navigeren naar de SessionDetail view met het geselecteerde sessieID
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("sessionDetail", {
+                    sessieID: this._selectedSession.sessieID
+                });
             } else {
                 console.error("No context found for selected session");
             }
-        }, */
+        }, 
+
         onAddSessionPress: function () {
             var sEventID = this._event;
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -147,7 +156,21 @@ sap.ui.define([
                 }); */
         },
 
+        _isUserAdmin: function () {
+            var oUserModel = this.getView().getModel("eventModel"); // Zorg ervoor dat je een model hebt dat de gebruikersinfo bevat
+            var sUserRole = oUserModel.getProperty("/rol"); // Stel dat de rol van de gebruiker hier is opgeslagen
+            console.log("User role:", sUserRole); 
+            return sUserRole === "beheerder"; // Controleer of de gebruiker een beheerder is
+        },
+        
+
         onShowParticipantsList: function () {
+            if (!this._isUserAdmin()) {
+                MessageToast.show("You do not have permission to view the participants.");
+                this.byId("_IDGenObjectPageSection2").setVisible(false); // Verberg de sectie als de gebruiker geen beheerder is
+                return;
+            }
+
             var oSelectedSession = this._selectedSession;
 
             if (oSelectedSession) {
@@ -160,6 +183,12 @@ sap.ui.define([
                 }
             }
         },
+        formatter: {
+            isBeheerder: function (rol) {
+                return rol === "beheerder";
+            }
+        },
+        
 
         onExit: function () {
             this.oRouter.getRoute("list").detachPatternMatched(this._onEventMatched, this);
