@@ -17,7 +17,7 @@
         <headerTitle>
             <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1">
                 <expandedHeading>
-                    <m:Title id="_IDGenTitle1" text="Create event" wrapping="true" class="sapUiSmallMarginEnd"/>
+                    <m:Title id="_IDGenTitle1" text="{i18n>maakevent}" wrapping="true" class="sapUiSmallMarginEnd"/>
                 </expandedHeading>
                 <snappedHeading>
                     <m:FlexBox id="_IDGenFlexBox2" wrap="Wrap" fitContainer="true" alignItems="Center">
@@ -28,15 +28,15 @@
                 </snappedHeading>
                 <actions>
                     <m:ToggleButton id="_IDGenToggleButton2"
-                        text="Save event"
+                        text="{i18n>eventopslaan}"
                         type="Emphasized"
                         press=".handleEventSavePress"/>
                     <m:ToggleButton id="_IDGenToggleButton1"
-                        text="Add sessions"
+                        text="{i18n>sessietoevoegen}"
                         type="Emphasized"
                         press=".onAddSessionPress"/>
                     <m:Button id="buttonCancelEvent"
-                        text="Cancel"
+                        text="{i18n>annuleer}"
                         press=".handleCancelPress"/>
                 </actions>
             </ObjectPageDynamicHeaderTitle>
@@ -44,24 +44,24 @@
 
         <ObjectPageSection id="_IDGenObjectPageSection1" >
             <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
-                <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout" title="Event Details">
+                <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout" title="{i18n>eventdetails}">
                     <form:content>
-                        <m:Label id="_IDGenLabel1" text="Name" />
+                        <m:Label id="_IDGenLabel1" text="{i18n>naam}" />
                         <m:Input id="_IDGenInput1" value="{eventForm>/naam}" change="handleChange"/>
 
-                        <m:Label id="_IDGenLabel2" text="Description" />
+                        <m:Label id="_IDGenLabel2" text="{i18n>beschrijving}" />
                         <m:Input id="_IDGenInput2" value="{eventForm>/beschrijving}" change="handleChange"/>
 
-                        <m:Label id="_IDGenLabel3" text="Date" />
+                        <m:Label id="_IDGenLabel3" text="{i18n>datum}" />
                         <m:DatePicker id="_IDGenDatePicker1" value="{path: 'eventForm>/datum', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy-MM-dd'}}" change="handleChange"/>
 
-                        <m:Label id="_IDGenLabel5" text="Start Time" />
+                        <m:Label id="_IDGenLabel5" text="{i18n>begintijd}" />
                         <m:TimePicker id="startTime" value="{path: 'eventForm>/beginTijd', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}" change="handleChange"/>
 
-                        <m:Label id="_IDGenLabel6" text="End Time" />
+                        <m:Label id="_IDGenLabel6" text="{i18n>eindtijd}" />
                         <m:TimePicker id="endTime" value="{path: 'eventForm>/eindTijd', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}" change="handleChange"/>
 
-                        <m:Label id="_IDGenLabel4" text="Location" />
+                        <m:Label id="_IDGenLabel4" text="{i18n>locatie}" />
                         <m:Input id="_IDGenInput3" value="{eventForm>/locatie}" change="handleChange"/>
                     </form:content>
                 </form:SimpleForm>

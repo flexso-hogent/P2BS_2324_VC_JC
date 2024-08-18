@@ -58,33 +58,43 @@
 					class="sapUiTinyMarginEnd">
 				</m:Avatar>
 				<m:VBox id="_IDGenVBox1" justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label id="_IDGenLabel1" text="Description"/>
+					<m:Label id="_IDGenLabel1" text="{i18n>beschrijving}"/>
 					<m:Text id="_IDGenText1" text="{eventModel>beschrijving}"/>
 				</m:VBox>
 				
 			</m:FlexBox>
 		</headerContent>
         <sections>
-			<ObjectPageSection id="_IDGenObjectPageSection1" title="General information">
+			<ObjectPageSection id="_IDGenObjectPageSection1" title="{i18n>alginfo}">
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection1">
 					<m:VBox id="generalInformationVBOX">
 					<m:HBox id="generalInformationHBOX1">
-							<m:Label id="labelLocatie" text="Locatie"></m:Label>
+							<m:Label id="labelLocatie" text="{i18n>locatie}"></m:Label>
 							<m:Text id="locatie" text="{eventModel>locatie}"></m:Text>
 							
 						
 					</m:HBox>
 					<m:HBox id="generalInformationHBOX2" >
-							<m:Label id="labelDatum" text="Datum"></m:Label>
+							<m:Label id="labelDatum" text="{i18n>datum}"></m:Label>
 							<m:Text id="datum" text="{eventModel>datum}"></m:Text>
+					
+					</m:HBox>
+					<m:HBox id="generalInformationHBOX3" >
+							<m:Label id="labelBegintijd" text="{i18n>begintijd}"></m:Label>
+							<m:Text id="begintijd" text="{eventModel>beginTijd}"></m:Text>
+					
+					</m:HBox>
+					<m:HBox id="generalInformationHBOX4" >
+							<m:Label id="labelEindtijd" text="{i18n>eindtijd}"></m:Label>
+							<m:Text id="eindtijd" text="{eventModel>eindTijd}"></m:Text>
 					
 					</m:HBox>
 					</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection id="_IDGenObjectPageSection3" title="Sessions">
+			<ObjectPageSection id="_IDGenObjectPageSection3" title="{i18n>sessies}">
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection3" >
 						<m:Table id="eventsTable"
@@ -108,7 +118,7 @@
 											title="{path: 'naam', model: 'eventModel' }"
 											text="{eventModel>lokaalnummer}"/>
 										<m:HBox id="_IDGenHBox1" justifyContent="End">
-                                			<m:Button id="registerButton" text="Register" press=".onRegisterParticipant" />
+                                			<m:Button id="registerButton" text="{i18n>registreer}" press=".onRegisterParticipant" />
                             			</m:HBox>
 									</m:cells>
 								</m:ColumnListItem>
@@ -131,7 +141,7 @@
 				</subSections>
 			</ObjectPageSection> -->
 			
-			 <ObjectPageSection id="_IDGenObjectPageSection2" title="Participants" visible="{= ${eventModel>/rol} === 'beheerder' }">
+			 <ObjectPageSection id="_IDGenObjectPageSection2" title="{i18n>deelnemers}" visible="{= ${eventModel>/rol} === 'beheerder' }">
 
 				<subSections>
 					<ObjectPageSubSection id="_IDGenObjectPageSubSection2">

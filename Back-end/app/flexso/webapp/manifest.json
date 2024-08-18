@@ -179,6 +179,30 @@
           "name": "EditSession",
           "pattern": "Sessions/{sessieID}/edit",
           "target": ["EditSession"]
+        },        {
+          "name": "FeedbackGeven",
+          "pattern": "FeedbackGeven/{participantID}",
+          "target": ["FeedbackGeven"]
+        },
+        {
+          "name": "MyEvents",
+          "pattern": "MyEvents",
+          "target": ["MyEvents"]
+        },
+        {
+          "name": "Feedback",
+          "pattern": "Feedback/{eventID}",
+          "target": ["Feedback"]
+        },
+        {
+          "name": "NotFound",
+          "pattern": "NotFound",
+          "target": ["NotFound"]
+        },
+        {
+          "name": "Users",
+          "pattern": "Users/{eventID}",
+          "target": ["Users"]
         }
       ],
       "targets": {
@@ -263,6 +287,41 @@
           "clearControlAggregation": false,
           "viewId": "EditSession",
           "viewName": "EditSession"
+        },
+        "FeedbackGeven": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "FeedbackGeven",
+          "viewName": "FeedbackGeven"
+        },
+        "MyEvents": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MyEvents",
+          "viewName": "MyEvents"
+        },
+        "Feedback": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Feedback",
+          "viewName": "Feedback"
+        },
+        "NotFound": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "NotFound",
+          "viewName": "NotFound"
+        },
+        "Users": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Users",
+          "viewName": "Users"
         }
       }
     },

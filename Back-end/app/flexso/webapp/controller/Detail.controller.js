@@ -56,11 +56,19 @@ sap.ui.define([
        onSessionSelect: function (oEvent) {
             var oSelectedItem = oEvent.getSource();
             var oContext = oSelectedItem.getBindingContext("eventModel");
+            var sessieID = oContext.getProperty("sessieID");
+            var eventID = oContext.getProperty("eventID");
+
+            this.getOwnerComponent().getRouter().navTo("sessionDetail", {
+                sessieID: sessieID,
+                eventID: eventID
+            });
 
             if (oContext) {
                 this._selectedSession = oContext.getObject();
                 console.log("Selected session:", this._selectedSession);
                 console.log("Selected session ID:", this._selectedSession.sessieID);
+                console.log("Selected event ID:", this._selectedSession._event);
 
                 // Navigeren naar de SessionDetail view met het geselecteerde sessieID
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

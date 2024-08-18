@@ -4,7 +4,7 @@
     xmlns="sap.m"
     displayBlock="true">
     <App id="register">
-        <Page id="_IDGenPage1" title="Register">
+        <Page id="_IDGenPage1" title="{i18n>registreer}">
             <content>
                 <VBox id="_IDGenVBox1"
                     class="sapUiSmallMargin"

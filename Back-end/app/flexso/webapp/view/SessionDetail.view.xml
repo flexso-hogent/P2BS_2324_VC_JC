@@ -9,10 +9,7 @@
     <ObjectPageLayout id="ObjectPageLayout" isChildPage="true" upperCaseAnchorBar="false">
 
         <headerTitle>
-            <ObjectPageHeader 
-                id="header" 
-                
-            />
+            <ObjectPageHeader id="header" objectTitle="{eventModel>naam}" objectSubtitle="{eventModel>type}"/>
         </headerTitle>
 
         <headerContent>
@@ -25,7 +22,7 @@
                                     <m:FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
                                 </core:layoutData>
                             </core:Icon>
-                            <m:Text id="_IDGenText1" text="{eventModel>/spreker}" />
+                            <m:Text id="_IDGenText1" text="{eventModel>spreker}" />
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout id="_IDGenHorizontalLayout2">
@@ -34,7 +31,7 @@
                                     <m:FlexItemData id="_IDGenFlexItemData2" growFactor="1" />
                                 </core:layoutData>
                             </core:Icon>
-                            <m:Text id="_IDGenText2" text="{ path: 'eventModel>/datum', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long', source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }} }"/>
+                            <m:Text id="_IDGenText2" text="{ path: 'eventModel>datum', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long', source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }} }"/>
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout id="_IDGenHorizontalLayout3">
@@ -45,14 +42,14 @@
                             </core:Icon>
                             <m:Text id="_IDGenText3" text="{
                                 parts: [
-                                    {path: 'eventModel>/beginTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }},
-                                    {path: 'eventModel>/eindTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }}
+                                    {path: 'eventModel>beginTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }},
+                                    {path: 'eventModel>eindTijd', targetType:'any', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'short', UTC: true }}
                                 ],
                                 formatter: '.myFormatDateFunction'
                             }" />
                         </layout:HorizontalLayout>
 
-                        <layout:HorizontalLayout id="rating2" visible="{= ${eventModel>/feedback} ? true : false }">
+                        <layout:HorizontalLayout id="rating2" visible="{= ${eventModel>feedback} ? true : false }">
                             <core:Icon id="_IDGenIcon5" src="sap-icon://feedback" class="size2">
                                 <core:layoutData>
                                     <m:FlexItemData id="_IDGenFlexItemData5" growFactor="1" />
@@ -80,22 +77,42 @@
 
                 <layout:VerticalLayout id="_IDGenVerticalLayout2" class="sapUiSmallMarginBeginEnd buttonWidth">
                     <m:Button id="_IDGenButton1" text="{i18n>terug}" type="Default" press=".onTerug"/>
-                    <m:Button text="{i18n>pasSessieAanButton}" type="Attention" press=".editSessie" visible="{= ${userCanEdit} ? true : false }" id="av3"/>
-                    <m:Button text="{i18n>verwijderSessieButton}" type="Reject" press=".deleteSessie" visible="{= ${userCanDelete} ? true : false }" id="av4" />
+                    <m:Button text="{i18n>sessieaanpassen}" type="Attention" press=".editSessie" visible="{= ${userCanEdit} ? true : false }" id="av3"/>
+                    <m:Button text="{i18n>verwijderSessie}" type="Reject" press=".deleteSessie" visible="{= ${userCanDelete} ? true : false }" id="av4" />
                 </layout:VerticalLayout>
             </m:FlexBox>
         </headerContent>
 
         <sections>
-            <ObjectPageSection titleUppercase="false" id="personal" title="{i18n>sessieSectionTitle}">
+            <ObjectPageSection titleUppercase="false" id="personal">
                 <subSections>
                     <ObjectPageSubSection id="personalSS1" title="{i18n>meerInfo}" titleUppercase="false">
                         <blocks>
-                            <m:Text id="_IDGenText5" text="{/beschrijving}" />
+                            <m:Text id="_IDGenText5" text="{eventModel>beschrijving}" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection1" title="{i18n>meerInfoEvent}" titleUppercase="false">
+                        <!-- <blocks>
+                            
+                            <m:Text id="_IDGenText7" text="{i18n>eventID}: {eventModel>event/eventID}" />
+                        </blocks>     -->
+                        <blocks>    
+                            <m:Text id="_IDGenText6" text="{eventModel>event/naam}" />
+                        </blocks>    
+                        <blocks> 
+                            <m:Text id="_IDGenText8" text="{eventModel>event/datum}" />
+                        </blocks>    
+                        <blocks> 
+                            <m:Text id="_IDGenText9" text="{i18n>begintijd}: {eventModel>event/beginTijd}" />
+                        </blocks>    
+                        <blocks> 
+                            <m:Text id="_IDGenText10" text="{i18n>eindtijd}: {eventModel>event/eindTijd}" />
+                            
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
+            
         </sections>
     </ObjectPageLayout>
 </mvc:View>

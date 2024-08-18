@@ -20,7 +20,7 @@
         <uxap:headerTitle>
             <uxap:ObjectPageDynamicHeaderTitle id="ObjectPageDynamicHeaderTitle">
                 <uxap:expandedHeading>
-                    <m:Title id="titleAddSessions" text="Add Sessions" wrapping="true" class="sapUiSmallMarginEnd"/>
+                    <m:Title id="titleAddSessions" text="{i18n>sessieToevoegen}" wrapping="true" class="sapUiSmallMarginEnd"/>
                 </uxap:expandedHeading>
                 <uxap:snappedHeading>
                     <m:FlexBox id="flexBoxHeading" wrap="Wrap" alignItems="Center">
@@ -29,12 +29,12 @@
                 </uxap:snappedHeading>
                 <uxap:actions>
                     <m:Button id="buttonSaveSession"
-                        text="Save session"
+                        text="{i18n>opslaanSessie}"
                         type="Emphasized"
                         press=".handleSessionSavePress"
                     />
                     <m:Button id="buttonCancelSession"
-                        text="Cancel"
+                        text="{i18n>annuleer}"
                         press=".handleCancelPress"
                     />
                 </uxap:actions>
@@ -46,32 +46,32 @@
                 <form:SimpleForm id="simpleFormSessionDetails"
                     editable="true"
                     layout="ResponsiveGridLayout"
-                    title="Session details"
+                    title="{i18n>sessieDetails}"
                 >
                     <form:content>
                         <!-- Fields for Session Details -->
-                        <m:Label id="_IDGenLabel1" text="Name" />
+                        <m:Label id="_IDGenLabel1" text="{i18n>naam}" />
                         <m:Input id="_IDGenInput1" value="{sessionForm>/naam}" />
 
-                        <m:Label id="_IDGenLabel2" text="Type" />
+                        <m:Label id="_IDGenLabel2" text="{i18n>type}" />
                         <m:Input id="_IDGenInput2" value="{sessionForm>/type}" />
 
-                        <m:Label id="_IDGenLabel3" text="Description" />
+                        <m:Label id="_IDGenLabel3" text="{i18n>beschrijving}" />
                         <m:Input id="_IDGenInput3" value="{sessionForm>/beschrijving}" />
 
-                        <m:Label id="_IDGenLabel4" text="Speaker" />
+                        <m:Label id="_IDGenLabel4" text="{i18n>spreker}" />
                         <m:Input id="_IDGenInput4" value="{sessionForm>/spreker}" />
 
-                        <m:Label id="_IDGenLabel5" text="Date" />
+                        <m:Label id="_IDGenLabel5" text="{i18n>datum}" />
                         <m:DatePicker id="_IDGenDatePicker1" value="{path: 'sessionForm>/datum', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' }}" />
 
-                        <m:Label id="_IDGenLabel6" text="Start Time" />
+                        <m:Label id="_IDGenLabel6" text="{i18n>begintijd}" />
                         <m:TimePicker id="_IDGenTimePicker1" value="{path: 'sessionForm>/beginTijd', type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'HH:mm:ss' }}" />
 
-                        <m:Label id="_IDGenLabel7" text="End Time" />
+                        <m:Label id="_IDGenLabel7" text="{i18n>eindtijd}" />
                         <m:TimePicker id="_IDGenTimePicker2" value="{path: 'sessionForm>/eindTijd', type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'HH:mm:ss' }}" />
 
-                        <m:Label id="_IDGenLabel8" text="Room" />
+                        <m:Label id="_IDGenLabel8" text="{i18n>lokaal}" />
                         <m:Input id="_IDGenInput5" value="{sessionForm>/lokaalnummer}" />
                     </form:content>
                 </form:SimpleForm>

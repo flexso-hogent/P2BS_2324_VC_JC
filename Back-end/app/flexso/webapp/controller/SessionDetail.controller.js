@@ -15,16 +15,15 @@ sap.ui.define([
 
       _onRouteMatched: function (oEvent) {
           var oArgs = oEvent.getParameter("arguments");
-          var oView = this.getView();
           var sessieID = oArgs.sessieID;
-
+          
+          var oView = this.getView();
+          
           // Bind the view to the session data
           oView.bindElement({
               path: "/Sessions(" + sessieID + ")", 
               model: "eventModel"
           });
-
-         
       },
 
       editSessie: function () {

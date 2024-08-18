@@ -2,6 +2,7 @@
     <App id="login">
         <pages>
             <Page title="Login" id="loginPage">
+                <Button icon="sap-icon://world" press="onPress" id="button" ariaHasPopup="Menu"/> 
                 <content>
                     <FlexBox id="_IDGenFlexBox1" justifyContent="Center" alignItems="Center" height="100%" width="100%">
                         <Panel id="_IDGenPanel1" width="40vw" backgroundDesign="Translucent">
